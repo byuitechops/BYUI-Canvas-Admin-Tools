@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Tech Ops Canvas Search Improvements",
+    "version": "0.2.1",
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+    "permissions": ["storage"],
+    "content_scripts": [{
+        "matches": [
+            "https://*.instructure.com/accounts/*"
+        ],
+        "js": [
+            "crossList.js"
+        ]
+    }]
+}
