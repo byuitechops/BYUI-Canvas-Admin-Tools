@@ -54,7 +54,7 @@ function populateSectionsColumn(courses, columnID) {
         var cellContents = '';
 
         cellContents = course.sections.map(section => {
-            var colorClass = section.nonxlist_course_id !== null ? 'color:#0076C6' : '';
+            var colorClass = section.nonxlist_course_id !== null ? 'color:#42aaf4' : '';
             var sectionName = section.name.replace(/section/i, '').replace(/\s*/, '');
             // Reference courses to REF
             sectionName = sectionName.includes('Reference') ? 'REF' : sectionName;
@@ -79,8 +79,6 @@ function populateSectionsColumn(courses, columnID) {
     });
 }
 
-console.log('Canvas Extended has successfully loaded on this page. Cross-listed courses will be displayed in the course search.');
-
 function main() {
     return new Promise((resolve, reject) => {
         courseRows = Array.from(document.querySelectorAll('tr')).slice(1);
@@ -101,22 +99,22 @@ function main() {
     });
 }
 
-var tableHTML = '';
-
-chrome.runtime.sendMessage({
-    greeting: 'settings'
-}, function (settingsObject) {
-    console.log('RESPONSE', settingsObject);
-    console.log(chrome.runtime.lastError);
-});
-
-setInterval(() => {
-    var currTable = document.querySelector('tbody').innerHTML;
-    if (tableHTML !== currTable) {
-        main()
-            .then(() => {
-                tableHTML = document.querySelector('tbody').innerHTML;
-            })
-            .catch(console.error);
+/* If the option to show the cross-listed column is on, then do it */
+chrome.storage.sync.get({
+    sectionsColumn: false,
+}, function (items) {
+    if (items.sectionsColumn === true) {
+        var tableHTML = '';
+        /* Check if the search results have changed at all, and if they have, insert sections */
+        setInterval(() => {
+            var currTable = document.querySelector('tbody').innerHTML;
+            if (tableHTML !== currTable) {
+                main()
+                    .then(() => {
+                        tableHTML = document.querySelector('tbody').innerHTML;
+                    })
+                    .catch(console.error);
+            }
+        }, 250);
     }
-}, 500);
+});
