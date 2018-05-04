@@ -29,7 +29,6 @@ function getOptions() {
     chrome.storage.sync.get({
         sectionsColumn: false,
     }, function (items) {
-        console.log(items);
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
