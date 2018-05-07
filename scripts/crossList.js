@@ -61,7 +61,7 @@ function populateSectionsColumn(courses, columnID) {
             // Course Council View courses to CCV
             sectionName = sectionName.includes('Course Council View') ? 'CCV' : sectionName;
             // Blueprint courses to BP
-            sectionName = sectionName.includes('Blueprin') ? 'BP' : sectionName;
+            sectionName = sectionName.includes('Blueprint') ? 'BP' : sectionName;
             // Long section names to just 3 letters with ...
             sectionName = sectionName.length > 5 ? sectionName.substring(0, 5) + '...' : sectionName;
             // Pad single numbers with a 0

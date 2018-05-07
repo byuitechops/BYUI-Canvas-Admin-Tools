@@ -8,11 +8,20 @@
     },
     "permissions": ["storage"],
     "content_scripts": [{
-        "matches": [
-            "https://*.instructure.com/accounts/*"
-        ],
-        "js": [
-            "scripts/crossList.js"
-        ]
-    }]
+            "matches": [
+                "https://*.instructure.com/accounts/*"
+            ],
+            "js": [
+                "scripts/crossList.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/courses/*"
+            ],
+            "js": [
+                "scripts/breadcrumbs.js"
+            ]
+        }
+    ]
 }
