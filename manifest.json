@@ -4,10 +4,14 @@
     "version": "0.3.0",
     "options_page": "views/options.html",
     "browser_action": {
-        "default_icon": "icon.png"
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
     },
-    "permissions": ["storage"],
-    "content_scripts": [{
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
             "matches": [
                 "https://*.instructure.com/accounts/*"
             ],
@@ -21,6 +25,15 @@
             ],
             "js": [
                 "scripts/breadcrumbs.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/*/modules",
+                "https://*.instructure.com/*/assigments"
+            ],
+            "js": [
+                "scripts/lock.js"
             ]
         }
     ]

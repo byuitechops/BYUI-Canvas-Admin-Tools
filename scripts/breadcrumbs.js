@@ -1,6 +1,3 @@
-// let breadcrumb = document.querySelector(`#crumb_course_${courseID}`);
-
-// breadcrumb.innerHTML += " (1, 3)";
 
 // Get the sections of current course
 function getData(courseID) {
@@ -25,7 +22,6 @@ function getData(courseID) {
 
 
 function createSectionNumbers(sections) {
-    console.log('SECTION', sections);
     var sectionNumbers = sections.map(section => {
         var colorClass = section.nonxlist_course_id !== null ? 'color:#42aaf4' : '';
         var sectionName = section.name.replace(/section/i, '').replace(/\s*/, '');
@@ -46,24 +42,32 @@ function createSectionNumbers(sections) {
     return `(${sectionNumbers})`;
 }
 
-
 function main() {
 
     let courseID = document.location.href.split("/")[4];
     let div = document.querySelector(`#breadcrumbs a[href*='/courses/${courseID}']`);
-    console.log(div);
 
     getData(courseID)
         .then(createSectionNumbers)
         .then(sectionNumbers => {
-            console.log(sectionNumbers);
-            if(sectionNumbers !== '()'){
-            div.innerHTML += " " + sectionNumbers;
-        }
+            if (sectionNumbers !== '()') {
+                div.innerHTML += " " + sectionNumbers;
+            }
         })
 
         .catch(console.error);
-    
+
 }
 
-main()
+/* If the option to show the cross-listed column is on, then do it */
+chrome.storage.sync.get({
+    sectionsBreadcrumb: false,
+}, function (items) {
+    if (items.sectionsBreadcrumb === true) {
+        main()
+    }
+});
+
+/**
+ * Do we want CCV courses, and the other specialized courses to show up in the breadcrumb trail?  A log of them are already there. 
+ */

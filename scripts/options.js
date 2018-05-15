@@ -20,6 +20,13 @@ function saveOptions() {
     chrome.storage.sync.set({
         sectionsColumn,
     }, function () {
+        // console.log('Options saved');
+    });
+
+    var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
+    chrome.storage.sync.set({
+        sectionsBreadcrumb,
+    }, function () {
         console.log('Options saved');
     });
 }
@@ -28,8 +35,10 @@ function saveOptions() {
 function getOptions() {
     chrome.storage.sync.get({
         sectionsColumn: false,
+        sectionsBreadcrumb: false,
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
+        document.querySelector('#sectionsBreadcrumb').checked = items.sectionsColumn;
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }
