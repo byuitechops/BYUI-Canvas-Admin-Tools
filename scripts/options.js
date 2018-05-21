@@ -17,14 +17,9 @@ function colorItem(event) {
 // Saves options to chrome.storage
 function saveOptions() {
     var sectionsColumn = document.querySelector('#sectionsColumn').checked;
-    chrome.storage.sync.set({
-        sectionsColumn,
-    }, function () {
-        // console.log('Options saved');
-    });
-
     var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
     chrome.storage.sync.set({
+        sectionsColumn,
         sectionsBreadcrumb,
     }, function () {
         console.log('Options saved');

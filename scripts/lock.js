@@ -1,9 +1,6 @@
-console.log("Running script");
-
-let button = document.getElementById('lockSections');
-button.addEventListener("click", lockElements);
 
 function lockElements() {
+    console.log("running");
     let elms = document.querySelectorAll('.icon-blueprint');
     if (elms.length === 0) {
         console.log("There is nothing to lock.");
@@ -26,3 +23,9 @@ function unlockElements() {
     })
     console.log('Unlocked');
 }
+
+let button = document.getElementById('DOMContentLoaded', () => {
+    document.getElementById('lockSections').addEventListener("click", console.log("It's Alive!!!!"));
+});
+console.log(button);
+// button.addEventListener("click", lockElements);
