@@ -1,9 +1,8 @@
-
 function lockElements() {
-    console.log("running");
+    console.log('running');
     let elms = document.querySelectorAll('.icon-blueprint');
     if (elms.length === 0) {
-        console.log("There is nothing to lock.");
+        console.log('There is nothing to lock.');
         return;
     }
     elms.forEach(el => {
@@ -15,7 +14,7 @@ function lockElements() {
 function unlockElements() {
     let elms = document.querySelectorAll('.icon-blueprint-lock');
     if (elms.length === 0) {
-        console.log("There is nothing to unlock.");
+        console.log('There is nothing to unlock.');
         return;
     }
     elms.forEach(el => {
@@ -25,7 +24,7 @@ function unlockElements() {
 }
 
 let button = document.getElementById('DOMContentLoaded', () => {
-    document.getElementById('lockSections').addEventListener("click", console.log("It's Alive!!!!"));
+    document.getElementById('lockSections').addEventListener('click', console.log('It\'s Alive!!!!'));
 });
 console.log(button);
 // button.addEventListener("click", lockElements);
