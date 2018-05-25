@@ -25,4 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('click', setItem);
     });
+
+    document.querySelector('#lockSections').addEventListener('click', () => {
+        lockItems(true);
+    });
+
+    document.querySelector('#unlockSections').addEventListener('click', () => {
+        lockItems(false);
+    });
 });

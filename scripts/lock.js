@@ -23,8 +23,14 @@ function unlockElements() {
     console.log('Unlocked');
 }
 
-let button = document.getElementById('DOMContentLoaded', () => {
-    document.getElementById('lockSections').addEventListener('click', console.log('It\'s Alive!!!!'));
-});
-console.log(button);
-// button.addEventListener("click", lockElements);
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        if (request.call === 'lockItems') {
+            if (request.lock) {
+                lockElements();
+            } else {
+                unlockElements();
+            }
+            sendResponse();
+        }
+    });

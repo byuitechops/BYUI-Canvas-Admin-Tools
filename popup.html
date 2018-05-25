@@ -7,22 +7,26 @@
     <title>Canvas Extended</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
-    <script src="scripts/main.js"></script>
-    <script src="scripts/lock.js"></script>
 </head>
 
 <body>
 
     <h2>Canvas Search Features</h2>
-
+    <!-- 
     <label for="displaySections" class="container">Display Sections
         <input type="checkbox" id="displaySections">
         <span class="checkmark"></span>
     </label>
-    <label for="lockElements" class="container">Lock Sections
-        <button type="button" id="lockSections">Lock Elements</button>
+    <br>
+    <br> -->
+    <label id="blueprintLockItems" for="lockElements" class="container">Blueprint Lock Items
+        <button type="button" id="lockSections">Lock Items</button>
+        <button type="button" id="unlockSections">Unlock Items</button>
     </label>
 
+    <script src="scripts/main.js"></script>
+    <script src="scripts/lock.js"></script>
+    <script src="scripts/messaging.js"></script>
 </body>
 
 </html>
