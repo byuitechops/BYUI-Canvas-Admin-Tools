@@ -10,8 +10,7 @@
     "permissions": [
         "storage"
     ],
-    "content_scripts": [
-        {
+    "content_scripts": [{
             "matches": [
                 "https://*.instructure.com/accounts/*"
             ],
@@ -32,7 +31,14 @@
                 "https://*.instructure.com/courses/*"
             ],
             "js": [
-                "scripts/lock.js",
+                "scripts/lock.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/*/modules"
+            ],
+            "js": [
                 "scripts/navToModule.js"
             ]
         }
