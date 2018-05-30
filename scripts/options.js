@@ -18,9 +18,11 @@ function colorItem(event) {
 function saveOptions() {
     var sectionsColumn = document.querySelector('#sectionsColumn').checked;
     var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
+    var navToModules = document.querySelector('#navToModules').checked;
     chrome.storage.sync.set({
         sectionsColumn,
         sectionsBreadcrumb,
+        navToModules,
     }, function () {
         console.log('Options saved');
     });
@@ -31,9 +33,11 @@ function getOptions() {
     chrome.storage.sync.get({
         sectionsColumn: false,
         sectionsBreadcrumb: false,
+        navToModules: false,
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
-        document.querySelector('#sectionsBreadcrumb').checked = items.sectionsColumn;
+        document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
+        document.querySelector('#navToModules').checked = items.navToModules;
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }

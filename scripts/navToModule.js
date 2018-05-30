@@ -38,11 +38,9 @@ function createNavbar() {
     navbar.style.padding = '2px';
     navbar.style.color = 'black';
     navbar.style.position = 'fixed';
-    // navbar.style.margin = 3;
     navbar.style.bottom = 0;
     navbar.style.left = sidebarWidth;
     navbar.style.display = 'flex';
-    // navbar.style.justifyContent = 'space-around';
 
     document.querySelector('body').appendChild(navbar);
 
@@ -55,15 +53,17 @@ function fillNavbar(modules) {
         if (/(lesson|week|w|l)\s*\d\d?/i.test(title)) {
             // Get the week num
             var digits = /\d\d?/.exec(title);
-            console.log(digits[0].length);
-            if (digits[0].length === 1) digits = '0' + /\d/.exec(title);
-            console.log(digits);
-            title = `W${digits}`;
+            title = digits[0].length === 1 ? `W0${digits}` : `W${digits}`;
         }
         return acc += `<a href="#${module.id}" id="${title}" style="font-size: 14px;padding:0 7px;">${title}</a>`;
     }, '');
 }
 
-getModules();
-createNavbar();
-fillNavbar(getModules());
+chrome.storage.sync.get({
+    navToModules: false,
+}, function (items) {
+    if (items.navToModules === true) {
+        createNavbar();
+        fillNavbar(getModules());
+    }
+});

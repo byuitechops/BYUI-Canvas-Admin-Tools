@@ -14,13 +14,13 @@ function setItem(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    chrome.storage.sync.get({
-        displaySections: 'potato'
-    }, (items) => {
-        Object.keys(items).forEach(key => {
-            document.querySelector(`#${key}`).checked = items[key];
-        });
-    });
+    // chrome.storage.sync.get({
+    //     displaySections: 'potato'
+    // }, (items) => {
+    //     Object.keys(items).forEach(key => {
+    //         document.querySelector(`#${key}`).checked = items[key];
+    //     });
+    // });
 
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('click', setItem);
