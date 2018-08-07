@@ -10,7 +10,8 @@
     "permissions": [
         "storage"
     ],
-    "content_scripts": [{
+    "content_scripts": [
+        {
             "matches": [
                 "https://*.instructure.com/accounts/*"
             ],
@@ -23,14 +24,7 @@
                 "https://*.instructure.com/courses/*"
             ],
             "js": [
-                "scripts/breadcrumbs.js"
-            ]
-        },
-        {
-            "matches": [
-                "https://*.instructure.com/courses/*"
-            ],
-            "js": [
+                "scripts/breadcrumbs.js",
                 "scripts/lock.js"
             ]
         },
@@ -40,6 +34,14 @@
             ],
             "js": [
                 "scripts/navToModule.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/*/quizzes/*/edit"
+            ],
+            "js": [
+                "scripts/deleteQuizQuestions.js"
             ]
         }
     ]

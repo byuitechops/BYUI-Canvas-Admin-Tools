@@ -33,4 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#unlockSections').addEventListener('click', () => {
         lockItems(false);
     });
+
+    document.querySelector('#deleteQuizQuestions').addEventListener('click', () => {
+        deleteQuestions();
+    })
 });

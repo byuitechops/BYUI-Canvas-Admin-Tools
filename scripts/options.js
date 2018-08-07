@@ -19,10 +19,12 @@ function saveOptions() {
     var sectionsColumn = document.querySelector('#sectionsColumn').checked;
     var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
     var navToModules = document.querySelector('#navToModules').checked;
+    let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
     chrome.storage.sync.set({
         sectionsColumn,
         sectionsBreadcrumb,
         navToModules,
+        deleteQuizQuestions,
     }, function () {
         console.log('Options saved');
     });
@@ -34,10 +36,12 @@ function getOptions() {
         sectionsColumn: false,
         sectionsBreadcrumb: false,
         navToModules: false,
+        deleteQuizQuestions: false,
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
         document.querySelector('#navToModules').checked = items.navToModules;
+        document.querySelector('#deleteQuizQuestions').checked = items.deleteQuizQuestions;
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }
