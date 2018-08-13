@@ -13,7 +13,6 @@ function setItem(event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // chrome.storage.sync.get({
     //     displaySections: 'potato'
     // }, (items) => {
@@ -34,7 +33,5 @@ document.addEventListener('DOMContentLoaded', () => {
         lockItems(false);
     });
 
-    document.querySelector('#deleteQuizQuestions').addEventListener('click', () => {
-        deleteQuestions();
-    })
+    document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
 });

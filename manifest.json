@@ -24,7 +24,14 @@
                 "https://*.instructure.com/courses/*"
             ],
             "js": [
-                "scripts/breadcrumbs.js",
+                "scripts/breadcrumbs.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/courses/*"
+            ],
+            "js": [
                 "scripts/lock.js"
             ]
         },
