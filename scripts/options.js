@@ -20,11 +20,13 @@ function saveOptions() {
     var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
     var navToModules = document.querySelector('#navToModules').checked;
     let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
+    let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
     chrome.storage.sync.set({
         sectionsColumn,
         sectionsBreadcrumb,
         navToModules,
         deleteQuizQuestions,
+        blueprintLockItems
     }, function () {
         console.log('Options saved');
     });
@@ -37,11 +39,13 @@ function getOptions() {
         sectionsBreadcrumb: false,
         navToModules: false,
         deleteQuizQuestions: false,
+        blueprintLockItems: false
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
         document.querySelector('#navToModules').checked = items.navToModules;
         document.querySelector('#deleteQuizQuestions').checked = items.deleteQuizQuestions;
+        document.querySelector('#blueprintLockItems').checked = items.blueprintLockItems;
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }

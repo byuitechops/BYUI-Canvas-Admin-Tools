@@ -17,3 +17,11 @@ h1 {
 h2 {
     color: var(--blue1);
 }
+
+#blueprintLockItems {
+    display: none;
+}
+
+#quizQuestionsDelete {
+    display: none;
+}

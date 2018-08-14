@@ -1,5 +1,8 @@
 /** Switch
  -------------------------------------*/
+ .flex-container {
+     display:flex;
+ }
 
 .option-title {
     display: inline;

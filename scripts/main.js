@@ -12,20 +12,20 @@ function setItem(event) {
     });
 }
 
-function addDeleteQuizQuestions() {
-    let quizPopup = `<label id="quizQuestionsDelete" class="container" for="deleteQuestions">Delete Quiz Questions
-        <button type="button" id="deleteQuizQuestions">Delete Questions</button>
-    </label>`
-}
+chrome.storage.sync.get({
+    deleteQuizQuestions: false,
+    blueprintLockItems: false
+}, function (items) {
+    if (items.deleteQuizQuestions === true) {
+        document.querySelector('#quizQuestionsDelete').style.display = 'unset';
+    }
+    if (items.blueprintLockItems === true) {
+        document.querySelector('#blueprintLockItems').style.display = 'unset';
+    }
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.sync.get({
-        displaySections: 'potato'
-    }, (items) => {
-        Object.keys(items).forEach(key => {
-            document.querySelector(`#${key}`).checked = items[key];
-        });
-    });
 
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('click', setItem);
@@ -39,15 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lockItems(false);
     });
 
-    document.querySelector('#deleteQuizQuestions').length > 1 ? document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions) : '';
+    document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
 });
 
-
-/* If the option to show the cross-listed column is on, then do it */
-chrome.storage.sync.get({
-    deleteQuizQuestions: false,
-}, function (items) {
-    if (items.deleteQuizQuestions === true) {
-        addDeleteQuizQuestions();
-    }
-});
