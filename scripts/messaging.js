@@ -20,3 +20,14 @@ function quizQuestions() {
         });
     });
 }
+
+function addDivs() {
+    // Gets the currently selected browser tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            call: 'addDivsToQuestionBank'
+        }, (response) => {
+            console.log('Divs added to question bank');
+        });
+    });
+}
