@@ -18,10 +18,8 @@ h2 {
     color: var(--blue1);
 }
 
-#blueprintLockItems {
-    display: none;
-}
-
-#quizQuestionsDelete {
+#blueprintLockItems,
+#quizQuestionsDelete,
+#addDivsToQuestions {
     display: none;
 }

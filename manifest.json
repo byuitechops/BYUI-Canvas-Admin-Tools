@@ -24,14 +24,7 @@
                 "https://*.instructure.com/courses/*"
             ],
             "js": [
-                "scripts/breadcrumbs.js"
-            ]
-        },
-        {
-            "matches": [
-                "https://*.instructure.com/courses/*"
-            ],
-            "js": [
+                "scripts/breadcrumbs.js",
                 "scripts/lock.js"
             ]
         },
@@ -49,6 +42,14 @@
             ],
             "js": [
                 "scripts/deleteQuizQuestions.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/*/question_banks/*"
+            ],
+            "js": [
+                "scripts/editQuestionBanks.js"
             ]
         }
     ]

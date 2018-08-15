@@ -14,13 +14,17 @@ function setItem(event) {
 
 chrome.storage.sync.get({
     deleteQuizQuestions: false,
-    blueprintLockItems: false
+    blueprintLockItems: false,
+    divsToQuestions: false
 }, function (items) {
     if (items.deleteQuizQuestions === true) {
         document.querySelector('#quizQuestionsDelete').style.display = 'unset';
     }
     if (items.blueprintLockItems === true) {
         document.querySelector('#blueprintLockItems').style.display = 'unset';
+    }
+    if (items.divsToQuestions === true) {
+        document.querySelector('#addDivsToQuestions').style.display = 'unset';
     }
 });
 
@@ -40,5 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
+
+    document.querySelector('#addDivsToQuestionBank').addEventListener('click', addDivs)
 });
 
