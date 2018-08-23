@@ -45,6 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
 
-    document.querySelector('#addDivsToQuestionBank').addEventListener('click', addDivs)
+    document.querySelector('#addDivsToQuestionBank').addEventListener('click', addDivs);
 });
 
