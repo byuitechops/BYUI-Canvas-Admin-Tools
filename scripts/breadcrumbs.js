@@ -42,7 +42,7 @@ function createSectionNumbers(sections) {
     return `(${sectionNumbers})`;
 }
 
-function main() {
+function displayBreadcrumbs() {
 
     let courseID = document.location.href.split("/")[4];
     let div = document.querySelector(`#breadcrumbs a[href*='/courses/${courseID}']`);
@@ -64,7 +64,7 @@ chrome.storage.sync.get({
     sectionsBreadcrumb: false,
 }, function (items) {
     if (items.sectionsBreadcrumb === true) {
-        main()
+        displayBreadcrumbs()
     }
 });
 
