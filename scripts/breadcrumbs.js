@@ -2,15 +2,14 @@
 // Get the sections of current course
 function getData(courseID) {
     return new Promise((resolve, reject) => {
-        // let courseID = document.location.href.split("/")[4];
         function receive() {
             var data = JSON.parse(this.responseText.replace('while(1);', ''));
             resolve(data);
-        };
+        }
 
         function onError() {
-            reject(new Error(`Failure to retrieve data for course 1902`));
-        };
+            reject(new Error('Failure to retrieve data for course 1902'));
+        }
 
         var request = new XMLHttpRequest();
         request.addEventListener('load', receive);
@@ -19,7 +18,6 @@ function getData(courseID) {
         request.send();
     });
 }
-
 
 function createSectionNumbers(sections) {
     var sectionNumbers = sections.map(section => {
@@ -44,14 +42,14 @@ function createSectionNumbers(sections) {
 
 function displayBreadcrumbs() {
 
-    let courseID = document.location.href.split("/")[4];
+    let courseID = new URL(document.location.href).pathname.split('/')[2];
     let div = document.querySelector(`#breadcrumbs a[href*='/courses/${courseID}']`);
 
     getData(courseID)
         .then(createSectionNumbers)
         .then(sectionNumbers => {
             if (sectionNumbers !== '()') {
-                div.innerHTML += " " + sectionNumbers;
+                div.innerHTML += ' ' + sectionNumbers;
             }
         })
 
@@ -64,7 +62,7 @@ chrome.storage.sync.get({
     sectionsBreadcrumb: false,
 }, function (items) {
     if (items.sectionsBreadcrumb === true) {
-        displayBreadcrumbs()
+        displayBreadcrumbs();
     }
 });
 
