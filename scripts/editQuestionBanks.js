@@ -39,8 +39,16 @@ function clickTheButtons() {
                 var diffholder = document.querySelector('#questions .question_form');
                 Array.from(diffholder.querySelectorAll('.question_form a')).filter(item => item.innerText.trim() === 'HTML Editor')[0].click();
                 let content = diffholder.querySelector('.question .question_content').value;
-                if (content.includes(`<div class="byui${courseName ? ' ' + courseName : ''}">`) !== true) {
+                // content.match(regex expression looking for divs)
+                // replace that with the one that I want.
+                // if (content.includes(/&lt;div(.*)&gt|&lt;\/div&gt;/g)) {
+                //     content = `<p>This includes some important stuff</p>`;
+                // }
 
+                if (content.includes(`<div class="byui${courseName ? ' ' + courseName : ''}">`) !== true) {
+                    if (content.includes(/&lt;div(.*)&gt|&lt;\/div&gt;/g)) {
+                        content = `<p>This includes some important stuff</p>`;
+                    }
                     diffholder.querySelector('.question .question_content').value = `<div class="byui${courseName ? ' ' + courseName : ''}"> ${content} </div>`;
                 }
 
