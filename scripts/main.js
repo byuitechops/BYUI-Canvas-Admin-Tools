@@ -15,7 +15,8 @@ function setItem(event) {
 chrome.storage.sync.get({
     deleteQuizQuestions: false,
     blueprintLockItems: false,
-    divsToQuestions: false
+    divsToQuestions: false,
+    adminAccountNames: false
 }, function (items) {
     if (items.deleteQuizQuestions === true) {
         document.querySelector('#quizQuestionsDelete').style.display = 'unset';

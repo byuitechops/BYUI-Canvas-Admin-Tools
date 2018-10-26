@@ -1,115 +1,138 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Options - Canvas Search Improvements</title>
-    <link rel="stylesheet" href="../style/main.css">
-    <link rel="stylesheet" href="../style/options.css">
-</head>
+    <head>
+        <title>Options - Canvas Search Improvements</title>
+        <link rel="stylesheet" href="../style/main.css">
+        <link rel="stylesheet" href="../style/options.css">
+    </head>
 
-<body>
+    <body>
 
-    <h1>Options</h1>
-    <h2>Canvas Search Improvements</h2>
-    <div class="flex-container">
-        <div class="outer-container">
-            <h3>Popup clickables</h3>
+        <h1>Options</h1>
+        <h2>Canvas Search Improvements</h2>
+        <div class="flex-container">
+            <div class="outer-container">
+                <h3>Popup clickables</h3>
 
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="deleteQuizQuestions" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Delete all Quiz Questions</div>
-                    <div class="option-description">
-                        Show the option to delete all quiz questions in the extension popup. When you click the button it will confirm if you want
-                        to delete
-                        <em>All</em> of the quiz questions. It will not confirm for each individual question.
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="deleteQuizQuestions" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Delete all Quiz Questions</div>
+                        <div class="option-description">
+                            Show the option to delete all quiz questions in the extension popup. When you click the
+                            button it will confirm if you want
+                            to delete
+                            <em>All</em> of the quiz questions. It will not confirm for each individual question.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="blueprintLockItems" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Lock/Unlock blueprint items</div>
+                        <div class="option-description">
+                            Show the option to lock and unlock blueprint items in the extension popup.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="addDivsToQuestionBank" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Add Divs to Quiz Questions</div>
+                        <div class="option-description">
+                            Show the option to add Divs on quiz questions in the extension popup. This feature takes a
+                            little bit to run, but it's a
+                            lot faster than doing them individually. If you're looking at the console, you will see a
+                            lot of
+                            errors, but those are because the tool is running too fast for the page to load completely.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="blueprintLockItems" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Lock/Unlock blueprint items</div>
-                    <div class="option-description">
-                        Show the option to lock and unlock blueprint items in the extension popup.
+
+
+            <div class="outer-container">
+                <h3>Displays</h3>
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="sectionsColumn" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Display Sections Column</div>
+                        <div class="option-description">
+                            This will display a new column listing the sections for each course on the right side of
+                            the search results. If a section
+                            was cross-listed into the course, it is highlighted in blue. Blueprint courses display as
+                            "BP", Reference
+                            courses as "REF", and courses that do not have sections but have a long title, are
+                            shortened to five
+                            letters.
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="addDivsToQuestionBank" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Add Divs to Quiz Questions</div>
-                    <div class="option-description">
-                        Show the option to add Divs on quiz questions in the extension popup. This feature takes a little bit to run, but it's a
-                        lot faster than doing them individually. If you're looking at the console, you will see a lot of
-                        errors, but those are because the tool is running too fast for the page to load completely.
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="sectionsBreadcrumb" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Display Sections in Breadcrumb</div>
+                        <div class="option-description">
+                            This will display the sections for the course in the breadcrumb after the course name. If a
+                            section was cross-listed into
+                            the course, it is highlighted in blue. Blueprint courses display as "BP", Reference courses
+                            as "REF",
+                            and courses that do not have sections but have a long title, are shortened to five letters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="navToModules" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Show Module Navbar</div>
+                        <div class="option-description">
+                            This will display the navbar on the modules page. All of the week/lesson modules have been
+                            shortened to 'W' followed by the
+                            week/lesson.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
+                            <input id="adminAccountNames" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Display Sub-accounts</div>
+                        <div class="option-description">
+                            This option will show the sub-account of courses in the Admin view. Will only display a
+                            sub-account if it's different than the previously displayed value.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="outer-container">
-            <h3>Displays</h3>
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="sectionsColumn" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Display Sections Column</div>
-                    <div class="option-description">
-                        This will display a new column listing the sections for each course on the right side of the search results. If a section
-                        was cross-listed into the course, it is highlighted in blue. Blueprint courses display as "BP", Reference
-                        courses as "REF", and courses that do not have sections but have a long title, are shortened to five
-                        letters.
-                    </div>
-                </div>
-            </div>
-
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="sectionsBreadcrumb" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Display Sections in Breadcrumb</div>
-                    <div class="option-description">
-                        This will display the sections for the course in the breadcrumb after the course name. If a section was cross-listed into
-                        the course, it is highlighted in blue. Blueprint courses display as "BP", Reference courses as "REF",
-                        and courses that do not have sections but have a long title, are shortened to five letters.
-                    </div>
-                </div>
-            </div>
-
-            <div class="options-container">
-                <div class="option-container">
-                    <label class="switch">
-                        <input id="navToModules" type="checkbox" checked />
-                        <div></div>
-                    </label>
-                    <div class="option-title">Show Module Navbar</div>
-                    <div class="option-description">
-                        This will display the navbar on the modules page. All of the week/lesson modules have been shortened to 'W' followed by the
-                        week/lesson.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="../scripts/options.js"></script>
-</body>
+        <script src="../scripts/options.js"></script>
+    </body>
 
 </html>

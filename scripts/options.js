@@ -22,13 +22,16 @@ function saveOptions() {
     let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
     let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
     let divsToQuestions = document.querySelector('#addDivsToQuestionBank').checked;
+    let adminAccountNames = document.querySelector('#adminAccountNames').checked;
+
     chrome.storage.sync.set({
         sectionsColumn,
         sectionsBreadcrumb,
         navToModules,
         deleteQuizQuestions,
         blueprintLockItems,
-        divsToQuestions
+        divsToQuestions,
+        adminAccountNames
     }, function () {
         console.log('Options saved');
     });
@@ -42,7 +45,8 @@ function getOptions() {
         navToModules: false,
         deleteQuizQuestions: false,
         blueprintLockItems: false,
-        divsToQuestions: false
+        divsToQuestions: false,
+        adminAccountNames: false
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
@@ -50,6 +54,8 @@ function getOptions() {
         document.querySelector('#deleteQuizQuestions').checked = items.deleteQuizQuestions;
         document.querySelector('#blueprintLockItems').checked = items.blueprintLockItems;
         document.querySelector('#addDivsToQuestionBank').checked = items.divsToQuestions;
+        document.querySelector('#adminAccountNames').checked = items.adminAccountNames;
+
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }
