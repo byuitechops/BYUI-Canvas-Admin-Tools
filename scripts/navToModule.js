@@ -1,17 +1,3 @@
-// let anchor = Array.from(document.querySelectorAll('a'));
-
-// console.log(anchor);
-// let filtered = anchor.filter(el => el.id.includes('module_'));
-// console.log(filtered);
-
-// filtered.forEach(setTitle);
-
-
-// function setTitle(el) {
-//     let titled = document.querySelector(`${el} > h2`);
-//     console.log(titled);
-// }
-
 function getModules() {
 
     let anchorTags = document.querySelectorAll('[data-module-id]>a[id*="module_"]');
@@ -27,7 +13,7 @@ function createNavbar() {
     let sidebar = document.querySelector('#header');
     let sidebarWidth = window.getComputedStyle(sidebar).getPropertyValue('width');
     // Set up the element however you need: styling, sizing, etc.
-    navbar.id = 'potato';
+    navbar.id = 'navToModule_ext';
     navbar.style.height = '24px';
     navbar.style.lineHeight = '24px';
     navbar.style.width = `calc(100vw - ${sidebarWidth})`;
@@ -48,7 +34,7 @@ function createNavbar() {
 
 
 function fillNavbar(modules) {
-    document.querySelector('#potato').innerHTML = modules.reduce((acc, module) => {
+    document.querySelector('#navToModule_ext').innerHTML = modules.reduce((acc, module) => {
         let title = document.querySelector(`#${module.id} + div>h2`).innerHTML;
         if (/(lesson|week|w|l)\s*\d\d?/i.test(title)) {
             // Get the week num

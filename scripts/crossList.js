@@ -31,7 +31,7 @@ function createColumn(columnID, Title) {
     if (document.querySelector(`#${columnID}`)) {
         return;
     }
-    var headerRow = document.querySelector('thead[data-reactid]>tr');
+    var headerRow = document.querySelector('thead>tr');
     var newHeader = document.createElement('th');
     newHeader.id = columnID;
     newHeader.innerText = Title;
