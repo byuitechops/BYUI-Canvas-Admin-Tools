@@ -32,7 +32,6 @@ function createNavbar() {
 
 }
 
-
 function fillNavbar(modules) {
     document.querySelector('#navToModule_ext').innerHTML = modules.reduce((acc, module) => {
         let title = document.querySelector(`#${module.id} + div>h2`).innerHTML;
@@ -43,13 +42,50 @@ function fillNavbar(modules) {
         }
         return acc += `<a href="#${module.id}" id="${title}" style="font-size: 14px;padding:0 7px;">${title}</a>`;
     }, '');
+
+
+    // addBlueprintParent();
+
 }
+
+// function addBlueprintParent() {
+//     function buildDetails() {
+//         return new Promise((resolve, reject) => {
+//             let courseID = new URL(document.location.href).pathname.split('/')[2];
+//             function receive() {
+//                 var data = JSON.parse(this.responseText.replace('while(1);', ''));
+//                 resolve(data);
+//             }
+//             function onError() {
+//                 reject(`Failure to retrieve data for course ${courseID}`);
+//             }
+//             var request = new XMLHttpRequest();
+//             request.addEventListener('load', receive);
+//             request.addEventListener('error', onError);
+//             request.open('GET', `https://byui.instructure.com/api/v1/courses/${courseID}/blueprint_subscriptions`);
+//             request.send();
+//         });
+//     }
+//     buildDetails()
+//         .then(blueprintObj => {
+//             if (Object.keys(blueprintObj).length > 0) {
+//                 let blueprintID = blueprintObj[0].blueprint_course.id;
+//                 document.querySelector('#navToModule_ext').innerHTML += `<a href="https://byui.instructure.com/courses/${blueprintID}" 
+//                 id="parentBlueprintCourse" target="_blank" style="font-size: 14px;padding:0 7px;position:fixed;right:0;">Parent Blueprint</a>`;
+//             }
+//         });
+// }
 
 chrome.storage.sync.get({
     navToModules: false,
 }, function (items) {
     if (items.navToModules === true) {
-        createNavbar();
+        if (!document.querySelector('#navToModule_ext')) createNavbar();
         fillNavbar(getModules());
+        // addBlueprintParent();
+
     }
 });
+
+
+

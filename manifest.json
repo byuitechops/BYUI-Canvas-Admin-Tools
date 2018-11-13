@@ -33,7 +33,8 @@
             ],
             "js": [
                 "scripts/breadcrumbs.js",
-                "scripts/lock.js"
+                "scripts/lock.js",
+                "scripts/addBlueprintParent.js"
             ]
         },
         {
