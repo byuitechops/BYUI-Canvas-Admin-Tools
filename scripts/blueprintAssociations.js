@@ -30,6 +30,7 @@ chrome.storage.sync.get({
     blueprintAssociations: false,
 }, function (items) {
     if (items.blueprintAssociations === true) {
+        // FIXME: Find some way to watch the body after the endint "ltr" span. 
         waitFor(document, document.querySelectorAll('span[dir="ltr"] .bca-associations-table tr[id^="course_"]').length > 0, blueprintAssociations);
     }
 });
