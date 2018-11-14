@@ -23,6 +23,7 @@ function saveOptions() {
     let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
     let divsToQuestions = document.querySelector('#addDivsToQuestionBank').checked;
     let adminAccountNames = document.querySelector('#adminAccountNames').checked;
+    let addBlueprintParent = document.querySelector('#addBlueprintParent').checked;
 
     chrome.storage.sync.set({
         sectionsColumn,
@@ -31,7 +32,8 @@ function saveOptions() {
         deleteQuizQuestions,
         blueprintLockItems,
         divsToQuestions,
-        adminAccountNames
+        adminAccountNames,
+        addBlueprintParent
     }, function () {
         console.log('Options saved');
     });
@@ -46,7 +48,8 @@ function getOptions() {
         deleteQuizQuestions: false,
         blueprintLockItems: false,
         divsToQuestions: false,
-        adminAccountNames: false
+        adminAccountNames: false,
+        addBlueprintParent: false
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
@@ -55,6 +58,7 @@ function getOptions() {
         document.querySelector('#blueprintLockItems').checked = items.blueprintLockItems;
         document.querySelector('#addDivsToQuestionBank').checked = items.divsToQuestions;
         document.querySelector('#adminAccountNames').checked = items.adminAccountNames;
+        document.querySelector('#addBlueprintParent').checked = items.addBlueprintParent;
 
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });

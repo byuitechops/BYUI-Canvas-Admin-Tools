@@ -42,7 +42,11 @@ function addBlueprintParent() {
     }
     buildDetails()
         .then(blueprintObj => {
+            console.log(Object.keys(blueprintObj).length);
             if (Object.keys(blueprintObj).length > 0) {
+                if (!document.querySelector('#navToModule_ext')) {
+                    createNavbar();
+                }
                 let blueprintID = blueprintObj[0].blueprint_course.id;
                 document.querySelector('#navToModule_ext').innerHTML += `<a href="https://byui.instructure.com/courses/${blueprintID}" 
                 id="parentBlueprintCourse" target="_blank" style="font-size: 14px;padding:0 7px;position:fixed;right:0;">Parent Blueprint</a>`;
@@ -50,12 +54,10 @@ function addBlueprintParent() {
         });
 }
 
-// chrome.storage.sync.get({
-//     navToModules: false,
-// }, function (items) {
-//     if (items.navToModules === true) {
-if (!document.querySelector('#navToModule_ext')) createNavbar();
-addBlueprintParent();
-
-//     }
-// });
+chrome.storage.sync.get({
+    addBlueprintParent: false,
+}, function (items) {
+    if (items.addBlueprintParent === true) {
+        addBlueprintParent();
+    }
+});

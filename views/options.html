@@ -120,6 +120,22 @@
                 <div class="options-container">
                     <div class="option-container">
                         <label class="switch">
+                            <input id="addBlueprintParent" type="checkbox" checked />
+                            <div></div>
+                        </label>
+                        <div class="option-title">Link to Blueprint Parent Account</div>
+                        <div class="option-description">
+                            This will add a link to the modules navbar at the bottom of the page that links to the
+                            parent blueprint. If there is no blueprint for the course nothing will show up there.
+                            Operates seperate of the module navbar, so it will show up with or without the navbar
+                            option being selected.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="option-container">
+                        <label class="switch">
                             <input id="adminAccountNames" type="checkbox" checked />
                             <div></div>
                         </label>
@@ -130,6 +146,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <script src="../scripts/options.js"></script>
