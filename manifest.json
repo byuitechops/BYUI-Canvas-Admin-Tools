@@ -34,7 +34,8 @@
             "js": [
                 "scripts/breadcrumbs.js",
                 "scripts/lock.js",
-                "scripts/addBlueprintParent.js"
+                "scripts/addBlueprintParent.js",
+                "scripts/blueprintAssociations.js"
             ]
         },
         {
