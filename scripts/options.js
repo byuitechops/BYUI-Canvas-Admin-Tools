@@ -14,29 +14,46 @@ function colorItem(event) {
     }
 }
 
+var i = 0;
 // Saves options to chrome.storage
 function saveOptions() {
-    var sectionsColumn = document.querySelector('#sectionsColumn').checked;
-    var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
-    var navToModules = document.querySelector('#navToModules').checked;
-    let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
-    let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
-    let divsToQuestions = document.querySelector('#addDivsToQuestionBank').checked;
-    let adminAccountNames = document.querySelector('#adminAccountNames').checked;
-    let addBlueprintParent = document.querySelector('#addBlueprintParent').checked;
 
-    chrome.storage.sync.set({
-        sectionsColumn,
-        sectionsBreadcrumb,
-        navToModules,
-        deleteQuizQuestions,
-        blueprintLockItems,
-        divsToQuestions,
-        adminAccountNames,
-        addBlueprintParent
-    }, function () {
-        console.log('Options saved');
-    });
+    let features = ['sectionsColumn', 'sectionsBreadcrumb', 'navToModules', 'addBlueprintParent', 'deleteQuizQuestions', 'blueprintLockItems', 'divsToQuestions', 'adminAccountNames'];
+    features = features.reduce((a, c) => {
+        console.log(a);
+        a[c] = document.querySelector(`#${c}`).checked;
+        return a;
+    }, {});
+    // console.log(features);
+
+    chrome.storage.sync.set(
+        features,
+        () => {
+            console.log('Options saved');
+        }
+    );
+
+    // var sectionsColumn = document.querySelector('#sectionsColumn').checked;
+    // var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
+    // var navToModules = document.querySelector('#navToModules').checked;
+    // let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
+    // let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
+    // let divsToQuestions = document.querySelector('#divsToQuestions').checked;
+    // let adminAccountNames = document.querySelector('#adminAccountNames').checked;
+    // let addBlueprintParent = document.querySelector('#addBlueprintParent').checked;
+
+    // chrome.storage.sync.set({
+    //     sectionsColumn,
+    //     sectionsBreadcrumb,
+    //     navToModules,
+    //     deleteQuizQuestions,
+    //     blueprintLockItems,
+    //     divsToQuestions,
+    //     adminAccountNames,
+    //     addBlueprintParent
+    // }, function () {
+    //     console.log('Options saved');
+    // });
 }
 
 // Gets options from chrome.storage
@@ -56,7 +73,7 @@ function getOptions() {
         document.querySelector('#navToModules').checked = items.navToModules;
         document.querySelector('#deleteQuizQuestions').checked = items.deleteQuizQuestions;
         document.querySelector('#blueprintLockItems').checked = items.blueprintLockItems;
-        document.querySelector('#addDivsToQuestionBank').checked = items.divsToQuestions;
+        document.querySelector('#divsToQuestions').checked = items.divsToQuestions;
         document.querySelector('#adminAccountNames').checked = items.adminAccountNames;
         document.querySelector('#addBlueprintParent').checked = items.addBlueprintParent;
 
