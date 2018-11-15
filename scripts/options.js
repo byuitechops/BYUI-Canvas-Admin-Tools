@@ -1,8 +1,16 @@
+// An array of all of the features added
+// This should be the name that is used everywhere, so all the loops work
+const features = ['sectionsColumn', 'sectionsBreadcrumb', 'navToModules', 'addBlueprintParent', 'deleteQuizQuestions', 'blueprintLockItems', 'divsToQuestions', 'adminAccountNames', 'blueprintAssociations'];
+
+/**
+ * Change the color of the checkbox
+ */
 function colorItem(event) {
+    let el;
     if (event.target) {
-        var el = event.target;
+        el = event.target;
     } else {
-        var el = event;
+        el = event;
     }
     if (el.nodeName === 'INPUT') {
         console.log(el.nodeName);
@@ -14,57 +22,32 @@ function colorItem(event) {
     }
 }
 
-// TODO: Shorten all the repeted code with loops
-// Saves options to chrome.storage
+/**
+ * Saves options to chrome.storage
+ */
 function saveOptions() {
-    var sectionsColumn = document.querySelector('#sectionsColumn').checked;
-    var sectionsBreadcrumb = document.querySelector('#sectionsBreadcrumb').checked;
-    var navToModules = document.querySelector('#navToModules').checked;
-    let deleteQuizQuestions = document.querySelector('#deleteQuizQuestions').checked;
-    let blueprintLockItems = document.querySelector('#blueprintLockItems').checked;
-    let divsToQuestions = document.querySelector('#addDivsToQuestionBank').checked;
-    let adminAccountNames = document.querySelector('#adminAccountNames').checked;
-    let addBlueprintParent = document.querySelector('#addBlueprintParent').checked;
-    let blueprintAssociations = document.querySelector('#blueprintAssociations').checked;
+    let checkedFeatures = features.reduce((a, c) => {
+        a[c] = document.querySelector(`#${c}`).checked;
+        return a;
+    }, {});
 
-    chrome.storage.sync.set({
-        sectionsColumn,
-        sectionsBreadcrumb,
-        navToModules,
-        deleteQuizQuestions,
-        blueprintLockItems,
-        divsToQuestions,
-        adminAccountNames,
-        addBlueprintParent,
-        blueprintAssociations
-    }, function () {
-        console.log('Options saved');
-    });
+    chrome.storage.sync.set(
+        checkedFeatures,
+        () => {
+            console.log('Options saved');
+        }
+    );
 }
 
-// Gets options from chrome.storage
+/**
+ * Gets options from chrome.storage
+ * Null value on the "get" returns all of the items
+ */
 function getOptions() {
-    chrome.storage.sync.get({
-        sectionsColumn: false,
-        sectionsBreadcrumb: false,
-        navToModules: false,
-        deleteQuizQuestions: false,
-        blueprintLockItems: false,
-        divsToQuestions: false,
-        adminAccountNames: false,
-        addBlueprintParent: false,
-        blueprintAssociations: false
-    }, function (items) {
-        document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
-        document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
-        document.querySelector('#navToModules').checked = items.navToModules;
-        document.querySelector('#deleteQuizQuestions').checked = items.deleteQuizQuestions;
-        document.querySelector('#blueprintLockItems').checked = items.blueprintLockItems;
-        document.querySelector('#addDivsToQuestionBank').checked = items.divsToQuestions;
-        document.querySelector('#adminAccountNames').checked = items.adminAccountNames;
-        document.querySelector('#addBlueprintParent').checked = items.addBlueprintParent;
-        document.querySelector('#blueprintAssociations').checked = items.blueprintAssociations;
-
+    chrome.storage.sync.get(null, items => {
+        features.forEach(c => {
+            document.querySelector(`#${c}`).checked = items[c];
+        });
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
 }
