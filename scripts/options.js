@@ -14,6 +14,7 @@ function colorItem(event) {
     }
 }
 
+// TODO: Shorten all the repeted code with loops
 // Saves options to chrome.storage
 function saveOptions() {
     var sectionsColumn = document.querySelector('#sectionsColumn').checked;

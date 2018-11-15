@@ -42,7 +42,6 @@ function addBlueprintParent() {
     }
     buildDetails()
         .then(blueprintObj => {
-            console.log(Object.keys(blueprintObj).length);
             if (Object.keys(blueprintObj).length > 0) {
                 if (!document.querySelector('#navToModule_ext')) {
                     createNavbar();
