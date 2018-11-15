@@ -1,4 +1,4 @@
-function blueprintAssociations(observer) {
+function blueprintAssociations() {
     let associatedCourses = document.querySelectorAll('span[dir="ltr"] .bca-associations-table tr[id^="course_"]');
 
     associatedCourses.forEach(v => {
