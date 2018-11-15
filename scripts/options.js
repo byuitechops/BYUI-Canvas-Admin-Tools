@@ -41,6 +41,7 @@ function saveOptions() {
     // let divsToQuestions = document.querySelector('#divsToQuestions').checked;
     // let adminAccountNames = document.querySelector('#adminAccountNames').checked;
     // let addBlueprintParent = document.querySelector('#addBlueprintParent').checked;
+    // let blueprintAssociations = document.querySelector('#blueprintAssociations').checked;
 
     // chrome.storage.sync.set({
     //     sectionsColumn,
@@ -50,10 +51,12 @@ function saveOptions() {
     //     blueprintLockItems,
     //     divsToQuestions,
     //     adminAccountNames,
-    //     addBlueprintParent
+    //     addBlueprintParent,
+    //     blueprintAssociations
     // }, function () {
     //     console.log('Options saved');
     // });
+
 }
 
 // Gets options from chrome.storage
@@ -66,7 +69,8 @@ function getOptions() {
         blueprintLockItems: false,
         divsToQuestions: false,
         adminAccountNames: false,
-        addBlueprintParent: false
+        addBlueprintParent: false,
+        blueprintAssociations: false
     }, function (items) {
         document.querySelector('#sectionsColumn').checked = items.sectionsColumn;
         document.querySelector('#sectionsBreadcrumb').checked = items.sectionsBreadcrumb;
@@ -76,6 +80,7 @@ function getOptions() {
         document.querySelector('#divsToQuestions').checked = items.divsToQuestions;
         document.querySelector('#adminAccountNames').checked = items.adminAccountNames;
         document.querySelector('#addBlueprintParent').checked = items.addBlueprintParent;
+        document.querySelector('#blueprintAssociations').checked = items.blueprintAssociations;
 
         document.querySelectorAll('.switch>input').forEach(colorItem);
     });
