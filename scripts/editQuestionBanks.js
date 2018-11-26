@@ -60,6 +60,16 @@ function clickTheButtons() {
     }
 
     /**
+     * Remove "online master" from the course code before adding the div to the question
+     * Not currently used, but I'm leaving the function here just in case there's more stuff we need to remove in the future
+     * 
+     * @param {string} c Course name to be added to the div
+     */
+    // function removeExtraStuff(c) {
+    //     return c.replace('originmaster', '');
+    // }
+
+    /**
      * Waits for an event to happen within the DOM before calling a callback function
      * 
      * @param {string} parent The element you want to watch for an event
@@ -82,9 +92,11 @@ function clickTheButtons() {
 
     /***** Main Functionality *****/
     var holders = Array.from(document.querySelectorAll('#questions .question_holder')).filter(holder => !holder.querySelector('.question_form'));
-    var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText;
-    // var courseName = title.length > 0 ? title.substr(0, title.indexOf(":")).replace(" ", "").toLocaleLowerCase() : null;
-    var courseName = title.length > 0 ? title.replace(/\s/g, '').toLocaleLowerCase() : null;
+    var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText.replace(/\s/g, '').toLocaleLowerCase();
+    var courseName = title.length > 0 ? title.replace('onlinemaster', '') : null;
+    // if (courseName.contains('originmaster')) {
+    //     courseName = removeExtraStuff(courseName);
+    // }
 
     holders.reduce((prev, holder, i) => prev.then(() => clickAllButtons(holder, i)), Promise.resolve());
 }
