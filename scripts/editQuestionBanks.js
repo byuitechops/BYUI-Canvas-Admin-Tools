@@ -22,13 +22,12 @@ function loadFullPage() {
 
 function clickTheButtons() {
 
-    var holders = Array.from(document.querySelectorAll('#questions .question_holder')).filter(holder => !holder.querySelector('.question_form'));
-    var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText;
-    // var courseName = title.length > 0 ? title.substr(0, title.indexOf(":")).replace(" ", "").toLocaleLowerCase() : null;
-    var courseName = title.length > 0 ? title.replace(/\s/g, '').toLocaleLowerCase() : null;
-
-    holders.reduce((prev, holder, i) => prev.then(() => clickAllButtons(holder, i)), Promise.resolve());
-
+    /***** Inner functions *****/
+    /**
+     * 
+     * @param {*} holder Outer container for the unedited question being worked on
+     * @param {number} i Index being worked on currently (currently unused)
+     */
     function clickAllButtons(holder, i) {
         return new Promise((resolve, reject) => {
             holder.querySelector('.edit_question_link , .edit_teaser_link').click();
@@ -37,32 +36,36 @@ function clickTheButtons() {
                 return sel && sel.getAttribute('data-rich_text') == 'true';
             }, () => {
                 var diffholder = document.querySelector('#questions .question_form');
-                Array.from(diffholder.querySelectorAll('.question_form a')).filter(item => item.innerText.trim() === 'HTML Editor')[0].click();
-                let content = diffholder.querySelector('.question .question_content').value;
-                // content.match(regex expression looking for divs)
-                // replace that with the one that I want.
-                // if (content.includes(/&lt;div(.*)&gt|&lt;\/div&gt;/g)) {
-                //     content = `<p>This includes some important stuff</p>`;
-                // }
-
-                if (content.includes(`<div class="byui${courseName ? ' ' + courseName : ''}">`) !== true) {
-                    if (content.includes(/&lt;div(.*)&gt|&lt;\/div&gt;/g)) {
-                        content = `<p>This includes some important stuff</p>`;
-                    }
-                    diffholder.querySelector('.question .question_content').value = `<div class="byui${courseName ? ' ' + courseName : ''}"> ${content} </div>`;
-                }
-
-                // else {
-                // diffholder.querySelector('.question .question_content').value = '<p>This is an answer</p>';
-                // }
-
-                // Close
+                addDivToQuestions(diffholder);
                 waitFor(diffholder, () => !diffholder.querySelector('.question_form'), resolve);
                 diffholder.querySelector('.btn-primary').click();
             });
         });
     }
 
+    /**
+     * Opens the HTML editor and adds the div to the question if it's not there already
+     * 
+     * @param {string} questionOuterShell The container of the question being edited
+     */
+    function addDivToQuestions(questionOuterShell) {
+        // Click button for the HTML editor
+        Array.from(questionOuterShell.querySelectorAll('.question_form a')).filter(item => item.innerText.trim() === 'HTML Editor')[0].click();
+        let content = questionOuterShell.querySelector('.question .question_content').value;
+        if (!content.includes(`<div class="byui ${courseName}">`)) {
+            console.log('Adding div');
+            questionOuterShell.querySelector('.question .question_content').value = `<div class="byui${courseName ? ' ' + courseName : ''}"> ${content} </div>`;
+        }
+        return questionOuterShell;
+    }
+
+    /**
+     * Waits for an event to happen within the DOM before calling a callback function
+     * 
+     * @param {string} parent The element you want to watch for an event
+     * @param {function} fn The event you are waiting for
+     * @param {function} cb What to do when the event happens
+     */
     function waitFor(parent, fn, cb) {
         var observer = new MutationObserver(() => {
             if (fn()) {
@@ -77,6 +80,13 @@ function clickTheButtons() {
         });
     }
 
+    /***** Main Functionality *****/
+    var holders = Array.from(document.querySelectorAll('#questions .question_holder')).filter(holder => !holder.querySelector('.question_form'));
+    var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText;
+    // var courseName = title.length > 0 ? title.substr(0, title.indexOf(":")).replace(" ", "").toLocaleLowerCase() : null;
+    var courseName = title.length > 0 ? title.replace(/\s/g, '').toLocaleLowerCase() : null;
+
+    holders.reduce((prev, holder, i) => prev.then(() => clickAllButtons(holder, i)), Promise.resolve());
 }
 
 chrome.runtime.onMessage.addListener(
