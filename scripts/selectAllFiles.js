@@ -1,9 +1,9 @@
 function displaySelectAllButton() {
-    // let checkBox = document.querySelector('#selectAllCheckbox');
-    // let label = document.querySelector('#selectAllCheckbox+[for=selectAllCheckbox]');
+    let checkBox = document.querySelector('#selectAllCheckbox');
+    let label = document.querySelector('#selectAllCheckbox+[for=selectAllCheckbox]');
 
-    // checkBox.classList.remove("screenreader-only");
-    // label.classList.remove("screenreader-only");
+    checkBox.classList.remove("screenreader-only");
+    label.classList.remove("screenreader-only");
     console.log("Running script");
 }
 
@@ -12,6 +12,7 @@ chrome.storage.sync.get({
     selectAllFiles: false,
 }, function (items) {
     if (items.selectAllFiles === true) {
+        // DOES NOT RUN EVERY TIME. MOST THE TIME.
         displaySelectAllButton();
     }
 });
