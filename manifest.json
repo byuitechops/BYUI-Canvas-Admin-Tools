@@ -64,7 +64,7 @@
         },
         {
             "matches": [
-                "https://*.instructure.com/courses/*/files/*"
+                "https://*.instructure.com/courses/*/files*"
             ],
             "js": [
                 "scripts/selectAllFiles.js"
