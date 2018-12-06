@@ -51,6 +51,12 @@ const features = [
         title: 'Link Associated Blueprint Courses',
         description: 'When you go to the associated courses tab in a blueprint course, this will make each course title a link to the correct course.',
         type: 'display'
+    },
+    {
+        id: 'selectAllFiles',
+        title: 'Select All Files Button',
+        description: 'Displays the "select all" button when working with files.',
+        type: 'display'
     }
 ];
 

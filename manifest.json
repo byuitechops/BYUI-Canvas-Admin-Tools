@@ -61,6 +61,14 @@
             "js": [
                 "scripts/editQuestionBanks.js"
             ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/courses/*/files*"
+            ],
+            "js": [
+                "scripts/selectAllFiles.js"
+            ]
         }
     ]
 }
