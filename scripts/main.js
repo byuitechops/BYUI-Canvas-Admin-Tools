@@ -14,12 +14,16 @@ function setItem(event) {
 
 chrome.storage.sync.get({
     deleteQuizQuestions: false,
+    deleteQuizzes: false,
     blueprintLockItems: false,
     divsToQuestions: false,
     adminAccountNames: false
 }, function (items) {
     if (items.deleteQuizQuestions === true) {
         document.querySelector('#quizQuestionsDelete').style.display = 'unset';
+    }
+    if (items.deleteQuizzes === true) {
+        document.querySelector('#killQuizzes').style.display = 'unset';
     }
     if (items.blueprintLockItems === true) {
         document.querySelector('#blueprintLockItems').style.display = 'unset';
@@ -45,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
+
+    document.querySelector('#deleteQuizzes').addEventListener('click', deleteQuizzes);
 
     document.querySelector('#addDivsToQuestionBank').addEventListener('click', addDivs);
 });

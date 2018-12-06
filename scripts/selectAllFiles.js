@@ -20,7 +20,7 @@ function waitFor(parent, fn, cb) {
 }
 
 /**
- * waits for the document to load.
+ * Waits for the document to load.
  * Then, it shows the "select all" button
  */
 function displaySelectAllButton() {
@@ -41,7 +41,6 @@ chrome.storage.sync.get({
     selectAllFiles: false,
 }, function (items) {
     if (items.selectAllFiles === true) {
-        // DOES NOT RUN EVERY TIME. MOST THE TIME.
         displaySelectAllButton();
     }
 });
