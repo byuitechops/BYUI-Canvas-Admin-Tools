@@ -69,6 +69,14 @@
             "js": [
                 "scripts/selectAllFiles.js"
             ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/courses/*/quizzes"
+            ],
+            "js": [
+                "scripts/deleteAllQuizzes.js"
+            ]
         }
     ]
 }

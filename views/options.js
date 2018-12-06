@@ -57,6 +57,12 @@ const features = [
         title: 'Select All Files Button',
         description: 'Displays the "select all" button when working with files.',
         type: 'display'
+    },
+    {
+        id: 'killQuizzes',
+        title: 'Deletes All Quizzes',
+        description: 'Deletes all the quizzes in the Quizzes section.',
+        type: 'popup'
     }
 ];
 

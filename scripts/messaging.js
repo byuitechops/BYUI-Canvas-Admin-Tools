@@ -21,6 +21,17 @@ function quizQuestions() {
     });
 }
 
+function deleteQuizzes() {
+    // Gets the currently selected browser tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            call: 'killQuizzes'
+        }, (response) => {
+            console.log('Quizzes deleted');
+        });
+    });
+}
+
 function addDivs() {
     // Gets the currently selected browser tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
