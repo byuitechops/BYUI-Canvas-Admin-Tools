@@ -1,4 +1,4 @@
-# canvas-search-extension
+# BYUI Canvas Admin Tools
 ## Purpose
 Enables various features to Canvas that aren't available by default.
 This includes features such as:
