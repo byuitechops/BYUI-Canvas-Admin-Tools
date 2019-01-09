@@ -38,7 +38,10 @@ const features = [
         type: 'popup'
     },
     {
-        id: 'divsToQuestions', title: 'Add Divs to Quiz Questions', description: 'Show the option to add Divs on quiz questions in the extension popup. This feature takes a little bit to run, but it\'s a lot faster than doing them individually.If you\'re looking at the console, you will see a lot of errors, but those are because the tool is running too fast for the page to load completely.', type: 'popup'
+        id: 'divsToQuestions',
+        title: 'Add Divs to Quiz Questions',
+        description: 'Show the option to add Divs on quiz questions in the extension popup. This feature takes a little bit to run, but it\'s a lot faster than doing them individually.If you\'re looking at the console, you will see a lot of errors, but those are because the tool is running too fast for the page to load completely.',
+        type: 'popup'
     },
     {
         id: 'adminAccountNames',

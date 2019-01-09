@@ -14,22 +14,22 @@ function setItem(event) {
 
 chrome.storage.sync.get({
     deleteQuizQuestions: false,
-    deleteQuizzes: false,
+    killQuizzes: false,
     blueprintLockItems: false,
     divsToQuestions: false,
     adminAccountNames: false
 }, function (items) {
-    if (items.deleteQuizQuestions === true) {
-        document.querySelector('#quizQuestionsDelete').style.display = 'unset';
+    if (items.deleteQuizQuestions === false) {
+        document.querySelector('#quizQuestionsDelete').style.display = 'none';
     }
-    if (items.deleteQuizzes === true) {
-        document.querySelector('#killQuizzes').style.display = 'unset';
+    if (items.killQuizzes === false) {
+        document.querySelector('#killQuizzes').style.display = 'none';
     }
-    if (items.blueprintLockItems === true) {
-        document.querySelector('#blueprintLockItems').style.display = 'unset';
+    if (items.blueprintLockItems === false) {
+        document.querySelector('#blueprintLockItems').style.display = 'none';
     }
-    if (items.divsToQuestions === true) {
-        document.querySelector('#addDivsToQuestions').style.display = 'unset';
+    if (items.divsToQuestions === false) {
+        document.querySelector('#addDivsToQuestions').style.display = 'none';
     }
 });
 
