@@ -23,7 +23,7 @@
         },
         {
             "matches": [
-                "https://*.instructure.com/accounts/*"
+                "https://*.instructure.com/accounts/*?"
             ],
             "js": [
                 "scripts/crossList.js"
