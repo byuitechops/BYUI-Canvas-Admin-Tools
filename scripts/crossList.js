@@ -82,7 +82,6 @@ function populateSectionsColumn(courses, columnID) {
 function main() {
     return new Promise((resolve, reject) => {
         courseRows = Array.from(document.querySelectorAll('tr')).slice(1);
-
         /* Create columns and cells */
         createColumn('crossListedSections', 'Sections');
         createColumnCells('crossListedSections', courseRows);
@@ -106,15 +105,18 @@ chrome.storage.sync.get({
     if (items.sectionsColumn === true) {
         var tableHTML = '';
         /* Check if the search results have changed at all, and if they have, insert sections */
-        setInterval(() => {
-            var currTable = document.querySelector('tbody').innerHTML;
-            if (tableHTML !== currTable) {
-                main()
-                    .then(() => {
-                        tableHTML = document.querySelector('tbody').innerHTML;
-                    })
-                    .catch(console.error);
-            }
-        }, 250);
+        if (document.querySelector('tbody[data-automation="courses list"]')) {
+            setInterval(() => {
+                var currTable = document.querySelector('tbody').innerHTML;
+                if (tableHTML !== currTable) {
+                    main()
+                        .then(() => {
+                            tableHTML = document.querySelector('tbody').innerHTML;
+                        })
+                        .catch(console.error);
+                }
+            }, 250);
+        }
+
     }
 });
