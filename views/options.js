@@ -122,6 +122,14 @@ function getOptions() {
     });
 }
 
+let bg = chrome.extension.getBackgroundPage().firstLoad();
+if (bg == true) {
+    console.log('First Load');
+    document.querySelector('body').style.backgroundColor = 'pink';
+} else {
+    console.log('Not the first load');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     getOptions();
     document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
