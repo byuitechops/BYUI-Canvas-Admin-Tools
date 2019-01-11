@@ -35,15 +35,3 @@ function deleteAllQuizzes() {
     }
     window.confirm = realConfirm;
 }
-
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.call === 'killQuizzes') {
-            var elt = document.createElement("script");
-            elt.innerHTML = '(' + deleteAllQuizzes.toString() + ')()';
-            document.head.appendChild(elt);
-            // addDeleteButton();
-            // document.querySelector("#killQuizzes").addEventListener("click", deleteAllQuizzes);
-        }
-        sendResponse();
-    });

@@ -22,15 +22,3 @@ function unlockElements() {
     })
     console.log('Unlocked');
 }
-
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.call === 'lockItems') {
-            if (request.lock) {
-                lockElements();
-            } else {
-                unlockElements();
-            }
-            sendResponse();
-        }
-    });

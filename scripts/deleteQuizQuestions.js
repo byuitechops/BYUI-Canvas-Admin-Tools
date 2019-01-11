@@ -11,13 +11,3 @@ function deleteQuestions() {
     }
     window.confirm = window._confirm
 }
-
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.call === 'deleteQuestions') {
-            var elt = document.createElement("script");
-            elt.innerHTML = '(' + deleteQuestions.toString() + ')()';
-            document.head.appendChild(elt);
-        }
-        sendResponse()
-    });

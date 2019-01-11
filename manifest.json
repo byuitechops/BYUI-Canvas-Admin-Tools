@@ -6,7 +6,11 @@
     "version": "0.8.1",
     "options_page": "views/options.html",
     "browser_action": {
-        "default_icon": "icon128.png",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        },
         "default_popup": "popup.html"
     },
     "icons": {
@@ -23,7 +27,8 @@
                 "https://*.instructure.com/*"
             ],
             "js": [
-                "scripts/adminAccountName.js"
+                "scripts/adminAccountName.js",
+                "listener.js"
             ]
         },
         {
@@ -83,6 +88,14 @@
             ],
             "js": [
                 "scripts/deleteAllQuizzes.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.instructure.com/*"
+            ],
+            "js": [
+                "scripts/editor.js"
             ]
         }
     ]

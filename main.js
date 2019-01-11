@@ -33,25 +33,22 @@ chrome.storage.sync.get({
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
-
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('click', setItem);
+    var buttons = document.querySelectorAll("button");
+    var tabId = 0;
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        tabId = tabs[0].id;
     });
 
-    document.querySelector('#lockSections').addEventListener('click', () => {
-        lockItems(true);
-    });
-
-    document.querySelector('#unlockSections').addEventListener('click', () => {
-        lockItems(false);
-    });
-
-    document.querySelector('#deleteQuizQuestions').addEventListener('click', quizQuestions);
-
-    document.querySelector('#deleteQuizzes').addEventListener('click', deleteQuizzes);
-
-    document.querySelector('#addDivsToQuestionBank').addEventListener('click', addDivs);
+    // Adds an event listener for each button in popup.html
+    buttons.forEach(b => {
+        b.addEventListener("click", () => {
+            let buttonAction = b.id;
+            // Sends a message with the button's ID to listener.js
+            chrome.tabs.sendMessage(tabId, buttonAction, response => {
+                console.log(response);
+            });
+        })
+    })
 });
 
