@@ -15,7 +15,7 @@ If a user is logged in with their school email google account they should be abl
 This will contain features on how to work on, update, and organize the app.
 If you're adding a new button to the extension popup:
   - Create file with desired logic within the *scripts* folder
-  - Update the **manifest.json** with that file's name, based on where it'll be used (e.g. "https://*.instructure.com/courses/*/quizzes" if you were only going to be running this script on the quizzes page)
+  - Update the **manifest.json** with that file's name, based on where it'll be used (e.g. "https://\*.instructure.com/courses/\*/quizzes" if you were only going to be running this script on the quizzes page)
   - Add a button to the **popup.html** (wrap it in a label similar to the others)
     - Ensure the button and the label have separate IDs
   - Add it (in object form) to the list of features located in **options.js**
