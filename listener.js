@@ -1,3 +1,10 @@
+/*****************
+ * This file listens for any messages that are sent to content scripts from the extension. 
+ * It will then perform some action depending on the message that is sent. 
+ * 
+ * 
+ *****************/
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // On any message it catches it here and runs it's respsective function
     // This is supposed to be listening to the messages sent by main.js
