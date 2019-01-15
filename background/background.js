@@ -1,4 +1,4 @@
-let thing = 0;
+let thing = 'installed';
 chrome.runtime.onInstalled.addListener(details => {
     if (details.reason === 'install') {
         console.log("First Load");

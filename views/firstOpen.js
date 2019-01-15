@@ -1,5 +1,6 @@
 function firstOpen() {
     // change the options page
+    document.querySelector('#extensionInfo').innerHTML = '<p>This is a thing</p>';
     console.log('This is the first Load');
 }
 
