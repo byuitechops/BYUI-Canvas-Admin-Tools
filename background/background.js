@@ -1,12 +1,14 @@
-let first = false;
+let thing = 0;
 chrome.runtime.onInstalled.addListener(details => {
     if (details.reason === 'install') {
         console.log("First Load");
 
         chrome.runtime.openOptionsPage();
-        first = true;
+        thing++;
     } else if (details.reason == 'update') {
         console.log('Update');
+        chrome.runtime.openOptionsPage();
+        thing += 2;
     } else {
         console.log(details);
     }
@@ -14,5 +16,6 @@ chrome.runtime.onInstalled.addListener(details => {
 
 
 function firstLoad() {
-    return first;
+
+    return thing;
 }

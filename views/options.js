@@ -122,9 +122,11 @@ function getOptions() {
     });
 }
 
+// Check if the extension was just installed
 let bg = chrome.extension.getBackgroundPage().firstLoad();
-if (bg == true) {
+if (bg <= 1) {
     console.log('First Load');
+    firstOpen();
     document.querySelector('body').style.backgroundColor = 'pink';
 } else {
     console.log('Not the first load');
