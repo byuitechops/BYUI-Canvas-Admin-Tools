@@ -34,21 +34,23 @@ chrome.storage.sync.get({
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    var buttons = document.querySelectorAll("button");
+    var buttons = document.querySelectorAll('button');
     var tabId = 0;
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         tabId = tabs[0].id;
     });
 
+
+
     // Adds an event listener for each button in popup.html
     buttons.forEach(b => {
-        b.addEventListener("click", () => {
+        b.addEventListener('click', () => {
             let buttonAction = b.id;
             // Sends a message with the button's ID to listener.js
             chrome.tabs.sendMessage(tabId, buttonAction, response => {
                 console.log(response);
             });
-        })
-    })
+        });
+    });
 });
 

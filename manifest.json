@@ -7,7 +7,7 @@
     "options_page": "views/options.html",
     "background": {
         "scripts": [
-            "background.js"
+            "/background/background.js"
         ],
         "persistent": false
     },
@@ -33,8 +33,8 @@
                 "https://*.instructure.com/*"
             ],
             "js": [
-                "scripts/adminAccountName.js",
-                "listener.js"
+                "/scripts/adminAccountName.js",
+                "/messaging/listener.js"
             ]
         },
         {

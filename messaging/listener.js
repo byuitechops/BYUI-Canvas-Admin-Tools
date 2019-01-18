@@ -28,6 +28,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         case "editor":
             sendResponse("Editor popped up!");
             break;
+        case 'options':
+            chrome.runtime.openOptionsPage();
+            break;
         default:
             sendResponse("Feature could not be found.");
     }
