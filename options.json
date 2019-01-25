@@ -69,5 +69,25 @@
             "description": "Deletes all the quizzes in the Quizzes section.",
             "type": "popup"
         }
+    ],
+    "install": [
+        {
+            "name": "popup",
+            "internals": "<p class='install-info'>The tools under this label will only run when you click the button in the popup. The button will only appear if the option below is selected. These tools primarily automate tasks. They turn several button clicks into just a few.</p>",
+            "selector": "div#popup",
+            "before": "div#popup div"
+        },
+        {
+            "name": "display",
+            "internals": "<p class='install-info'>The tools under the Displays label will run automatically on the correct pages. The purpose of these tools is to make navigation easier. There are a couple that do things when clicked, but most of them are for navigation.</p>",
+            "selector": "div#display",
+            "before": "div#display div"
+        },
+        {
+            "name": "General Info",
+            "internals": "<p class='install-info'>The purpose of this extension is to make navigating and manipulating Canvas as an admin easier.</p>",
+            "selector": "body",
+            "before": "div"
+        }
     ]
 }

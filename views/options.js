@@ -1,3 +1,11 @@
+/**************************
+ *         getJson
+ * 
+ * Read in the JSON file containing
+ * all the information to build
+ * the options page.
+ * 
+ **************************/
 function getJson() {
     return new Promise((resolve, reject) => {
         let extId = chrome.runtime.id;
@@ -19,22 +27,11 @@ function getJson() {
     });
 }
 
-getJson().then(el => {
-    let features = JSON.parse(el).details;
-    createPage(features);
-    return features;
-}).then(features => {
-    getOptions(features);
-    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
-    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', () => {
-        saveOptions(features);
-    }));
-});
-
 /*******************************
- * 
+ *          colorItem
  * 
  * Change the color of the checkbox
+ * when an option is selected.
  * 
 ********************************/
 function colorItem(event) {
@@ -54,11 +51,12 @@ function colorItem(event) {
     }
 }
 
-
 /********************************
- * 
+ *          saveOptions
  * 
  * Saves options to chrome.storage
+ * when one of the options is
+ * selected.
  * 
 ********************************/
 function saveOptions(features) {
@@ -70,7 +68,6 @@ function saveOptions(features) {
     chrome.storage.sync.set(
         checkedFeatures);
 }
-
 
 /********************************
  *
@@ -97,13 +94,40 @@ function getOptions(features) {
  *
  ********************************/
 let bg = chrome.extension.getBackgroundPage().firstLoad();
-if (bg === 'installed') {
-    console.log('First Load');
-    firstOpen();
-} else if (bg === 'updated') {
-    updated();
-    console.log('Not the first load');
-}
+
+
+/********************************
+ * 
+ * Creates the options page based
+ * on the information in options.json.
+ * It also sets up the event listeners
+ * on each switch for color changing
+ * and setting chrome storage.
+ *
+ ********************************/
+getJson().then(data => {
+    data = JSON.parse(data);
+    createPage(data.details);
+    return data;
+}).then(data => {
+    getOptions(data.details);
+    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
+    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', () => {
+        saveOptions(data.details);
+    }));
+
+    // Check if the extension was just installed or updated
+    if (bg === 'installed') {
+        console.log('First Load');
+        firstOpen(data.install);
+    } else if (bg === 'updated') {
+        updated(data.update);
+        console.log('Not the first load');
+    }
+
+});
+
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     getOptions(features);
