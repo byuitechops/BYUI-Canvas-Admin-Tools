@@ -17,11 +17,3 @@ h1 {
 h2 {
     color: var(--blue1);
 }
-
-/* This is for the popup. It hides */
-/* #blueprintLockItems,
-#quizQuestionsDelete,
-#addDivsToQuestions,
-#killQuizzes {
-    display: none;
-} */

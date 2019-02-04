@@ -1,3 +1,4 @@
+
 /********************************
  *
  * When the extension is added, this 
@@ -17,8 +18,8 @@ function firstOpen(installInfo) {
         let before = document.querySelector(el.before);
 
         let div = document.createElement('div');
-        div.className = 'install-info';
-        div.innerHTML = `<p>${el.internals}</p>`;
+        div.classList = 'option-description install-info';
+        div.innerHTML = el.internals;
         selector.insertBefore(div, before);
 
     });
@@ -40,4 +41,34 @@ function updated(updateInfo) {
     // change the options page
     console.log('Things just done updated');
     console.log(updateInfo);
+
+    let outer = document.querySelector('.flex-container');
+    console.log(outer);
+
+    let div = document.createElement('div');
+    div.className = 'outer-container';
+    div.id = 'update_container';
+
+    let updateText =
+        `<h3>Update Info</h3>
+            <div id="update" class="options-container">
+                <div class="option-title">Version ${updateInfo.version}${updateInfo.flashyTitle ? ' - ' + updateInfo.flashyTitle : ''}</div>
+                <div class="option-description">`;
+
+
+    updateText += '<ol>';
+
+    updateText = updateInfo.features.reduce((acc, curr) => {
+        let item = `<li>${curr}</li>`;
+        acc += item;
+        return acc;
+    }, updateText);
+
+    updateText += '</ol></div></div>';
+
+
+    div.innerHTML += updateText;
+    console.log(div);
+
+    outer.appendChild(div);
 }

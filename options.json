@@ -1,6 +1,24 @@
 {
     "update": [
-        {}
+        {
+            "version": "1.0.0",
+            "flashyTitle": "Total Revamp",
+            "features": [
+                "Update the layout of the options page",
+                "Automatically open options page on both install and updates",
+                "Add install and update info"
+            ],
+            "short": "Example 1"
+        },
+        {
+            "version": "0.8.1",
+            "flashyTitle": "",
+            "features": [
+                "Added a feature to add the correct wrapper to every question in a question bank.",
+                "This is the second thing"
+            ],
+            "short": "Example 2"
+        }
     ],
     "details": [
         {
