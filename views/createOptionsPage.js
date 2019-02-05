@@ -1,4 +1,4 @@
-function createPage(features) {
+function createPage(features, updates) {
 
     features.map(({ type, id, title, description: desc }) => {
 
@@ -16,5 +16,28 @@ function createPage(features) {
         document.querySelector(`#${type}`).appendChild(div);
 
     });
+
+    createUpdateDiv(updates);
+}
+
+function createUpdateDiv(updates) {
+
+    let div = document.createElement('div');
+    div.className = 'all-updates-info';
+
+    let ul = '<ul>';
+
+    ul = updates.reduce((acc, curr) => {
+        let li =
+            `<li><span>${curr.version}</span> - ${curr.short}</li>`;
+        acc += li;
+        return acc;
+    }, ul);
+
+    ul += '</ul>';
+
+    div.innerHTML = ul;
+    document.querySelector('#extension').before(div);
+    console.log(div);
 
 }

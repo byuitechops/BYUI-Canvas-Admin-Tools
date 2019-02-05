@@ -84,6 +84,32 @@ function getOptions(features) {
     });
 }
 
+function showUpdateInfo() {
+    // This gives the computed value of the element. 
+    let right = window.getComputedStyle(document.querySelector('.all-updates-info')).getPropertyValue('right');
+    let box = document.querySelector('.all-updates-info').style;
+    console.log(right);
+
+    let rightNum = parseInt(right.substring(0, right.length - 2));
+
+    if (rightNum < 0) {
+        box.animation = 'slidein .25s linear forwards';
+        // box.display = 'block';
+    } else if (rightNum > 0) {
+        box.animation = 'slideout .25s linear forwards';
+    }
+
+    // // I'll look into this a little more in the future. It's a different way of doing the transition/animation.
+    // if (box.width == 0 || box.width == '0px') {
+    //     box.width = '25%';
+    //     document.querySelector('.all-updates-info').style.boxShadow = '0px 10px 16px 5px rgba(0,0,0,0.2)';
+    // } else {
+    //     document.querySelector('.all-updates-info').style.boxShadow = 'none';
+    //     box.width = '0';
+    // }
+
+}
+
 /********************************
  *
  * Check to see if the extension
@@ -107,7 +133,7 @@ let bg = chrome.extension.getBackgroundPage().firstLoad();
  ********************************/
 getJson().then(data => {
     data = JSON.parse(data);
-    createPage(data.details);
+    createPage(data.details, data.update);
     return data;
 }).then(data => {
     getOptions(data.details);
@@ -116,15 +142,20 @@ getJson().then(data => {
         saveOptions(data.details);
     }));
 
+    document.querySelector('#allUpdates').addEventListener('click', () => {
+
+        // Add popup type thing with the short descriptions of each update with the version number
+        showUpdateInfo();
+    });
+
     // Check if the extension was just installed or updated
     if (bg === 'installed') {
         console.log('First Load');
         firstOpen(data.install);
     } else if (bg === 'updated') {
-        updated(data.update);
+        updated(data.update[0]);
         console.log('Not the first load');
     }
-
 });
 
 

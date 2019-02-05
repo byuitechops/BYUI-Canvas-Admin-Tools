@@ -8,7 +8,7 @@
                 "Automatically open options page on both install and updates",
                 "Add install and update info"
             ],
-            "short": "Example 1"
+            "short": "This will display a new column listing the sections for each course on the right side of the search results.If a section was cross - listed into the course, it is highlighted in blue.Blueprint courses display as 'BP', Reference courses as 'REF', and courses that do not have sections but have a long title, are shortened to five letters"
         },
         {
             "version": "0.8.1",
