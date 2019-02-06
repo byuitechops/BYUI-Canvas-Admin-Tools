@@ -42,16 +42,15 @@ function updated(updateInfo) {
     console.log('Things just done updated');
     console.log(updateInfo);
 
-    let outer = document.querySelector('.flex-container');
+    let outer = document.querySelector('.all-updates-info');
     console.log(outer);
 
     let div = document.createElement('div');
-    div.className = 'outer-container';
+    // div.className = 'outer-container';
     div.id = 'update_container';
 
     let updateText =
-        `<h3>Update Info</h3>
-            <div id="update" class="options-container">
+        `<div id="update" class="options-container">
                 <div class="option-title">Version ${updateInfo.version}${updateInfo.flashyTitle ? ' - ' + updateInfo.flashyTitle : ''}</div>
                 <div class="option-description">`;
 
@@ -71,4 +70,6 @@ function updated(updateInfo) {
     console.log(div);
 
     outer.appendChild(div);
+    document.querySelector('.all-updates-info ul').style.display = 'none';
+    outer.style.animation = 'slidein .25s linear forwards';
 }

@@ -24,8 +24,8 @@ function createUpdateDiv(updates) {
 
     let div = document.createElement('div');
     div.className = 'all-updates-info';
-
-    let ul = '<ul>';
+    // let exit = '<div id="exit">&times</div>';
+    let ul = '<div id="exit">&#215</div><ul>';
 
     ul = updates.reduce((acc, curr) => {
         let li =
@@ -36,7 +36,7 @@ function createUpdateDiv(updates) {
 
     ul += '</ul>';
 
-    div.innerHTML = ul;
+    div.innerHTML += ul;
     document.querySelector('#extension').before(div);
     console.log(div);
 

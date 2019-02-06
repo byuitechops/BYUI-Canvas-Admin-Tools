@@ -95,7 +95,7 @@ function showUpdateInfo() {
     if (rightNum < 0) {
         box.animation = 'slidein .25s linear forwards';
         // box.display = 'block';
-    } else if (rightNum > 0) {
+    } else if (rightNum >= 0) {
         box.animation = 'slideout .25s linear forwards';
     }
 
@@ -143,8 +143,18 @@ getJson().then(data => {
     }));
 
     document.querySelector('#allUpdates').addEventListener('click', () => {
-
         // Add popup type thing with the short descriptions of each update with the version number
+        showUpdateInfo();
+
+        if (document.querySelector('.all-updates-info ul').style.display == 'none') {
+            setTimeout(() => {
+                document.querySelector('.all-updates-info ul').style.display = 'unset';
+                document.querySelector('#update_container').style.display = 'none';
+            }, 250);
+        }
+    });
+
+    document.querySelector('#exit').addEventListener('click', () => {
         showUpdateInfo();
     });
 

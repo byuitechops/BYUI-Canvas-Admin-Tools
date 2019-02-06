@@ -6,9 +6,11 @@ body {
 
 .flex-container {
      display:grid;
-     grid-template-columns: repeat(auto-fit, 1fr);
+     grid-template-columns: 1fr repeat(2, minmax(400px,710px)) 1fr;
+     gap: 3%;
+     margin: auto;
      grid-template-areas: 
-     'popup display update';
+     '. popup display .';
  }
 
  #popup_container {
@@ -17,10 +19,6 @@ body {
 
  #display_container {
      grid-area: display;
- }
-
- .update-info {
-     grid-area: update;
  }
 
 .option-title {
@@ -32,7 +30,6 @@ body {
     padding: 20px;
     font-size: 16px;
     margin-right: 10px;
-    /* width: 700px; */
 }
 
 .option-description li {
@@ -56,13 +53,13 @@ body {
 /* Defines the animations that should be used. */
 @keyframes slidein {
     from {right: -27%;}
-    to {right: 5px;}
+    to {right: 0;}
     /* from {width: 0;}
     to {width: 25%;} */
 }
 
 @keyframes slideout {
-    from {right: 5px;}
+    from {right: 0;}
     to {right:-27%;}
     /* from{width: 25%;}
     to {width: 0;} */
@@ -71,9 +68,9 @@ body {
 .all-updates-info {
     position:absolute;
     right: -27%;
-    top: 30px;
+    top: 0;
     width:25%;
-    height:90vh;
+    height:100vh;
     z-index: 10;
     background-color: white;
     overflow-x:hidden;
@@ -82,6 +79,29 @@ body {
     /* animation: slidein .25s linear; */
     animation-fill-mode: forwards;
     box-shadow: 0px 10px 16px 5px rgba(0,0,0,0.2);
+    padding:0;
+    margin:0;
+}
+
+/* Grid */
+.all-updates-info {
+    display:grid;
+    grid-template-rows: 7% auto 10%;
+    grid-template-columns: 15px 1fr 48px;
+    grid-template-areas: 
+    "exit .   .  ." 
+    ". list list ."
+    ".  .    .   .";
+}
+
+.all-updates-info ul {
+    grid-area: list;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 15px;
+    margin-inline-end: 25px;
+    padding-inline-start: 0;
 }
 
 .all-updates-info span {
@@ -93,6 +113,15 @@ body {
 .all-updates-info li {
     list-style-type: none;
     /* width: calc(); */
+}
+
+#exit {
+    grid-area: exit;
+    margin-top:-15px;
+    padding: 0;
+    /* position:absolute; */
+    font-size: 5em;
+    cursor:pointer;
 }
 
 /*************** Switch ***************/
