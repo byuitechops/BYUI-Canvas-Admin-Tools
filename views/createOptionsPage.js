@@ -24,20 +24,18 @@ function createUpdateDiv(updates) {
 
     let div = document.createElement('div');
     div.className = 'all-updates-info';
-    // let exit = '<div id="exit">&times</div>';
-    let ul = '<div id="exit">&#215</div><ul>';
+    let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><ul id="update_list">';
 
-    ul = updates.reduce((acc, curr) => {
+    ul = updates.reduce((acc, curr, i) => {
         let li =
-            `<li><span>${curr.version}</span> - ${curr.short}</li>`;
+            `<li><span id="${i}">${curr.version}</span> - ${curr.short}</li>`;
         acc += li;
         return acc;
     }, ul);
 
-    ul += '</ul>';
+    ul += '</ul></div>';
 
     div.innerHTML += ul;
     document.querySelector('#extension').before(div);
     console.log(div);
-
 }

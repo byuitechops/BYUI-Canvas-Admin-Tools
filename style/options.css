@@ -1,25 +1,22 @@
 /************* General display ************/
 
-body {
-    overflow-x: hidden;
+.flex-container {
+    grid-area: body;
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(400px, 710px)) 1fr;
+    gap: 3%;
+    margin: auto;
+    grid-template-areas:
+        '. popup display .';
 }
 
-.flex-container {
-     display:grid;
-     grid-template-columns: 1fr repeat(2, minmax(400px,710px)) 1fr;
-     gap: 3%;
-     margin: auto;
-     grid-template-areas: 
-     '. popup display .';
- }
+#popup_container {
+    grid-area: popup;
+}
 
- #popup_container {
-     grid-area: popup;
- }
-
- #display_container {
-     grid-area: display;
- }
+#display_container {
+    grid-area: display;
+}
 
 .option-title {
     display: inline;
@@ -37,71 +34,114 @@ body {
 }
 
 .install-info {
-    padding:0;
+    padding: 0;
 }
 
 /********* All updates popup ************/
 
 #allUpdates {
     position: absolute;
-    right:10px;
-    top:10px;
+    right: 10px;
+    top: 78px;
     cursor: pointer;
     user-select: none;
+    font-size: 3.8em;
 }
 
 /* Defines the animations that should be used. */
 @keyframes slidein {
-    from {right: -27%;}
-    to {right: 0;}
+    from {
+        right: -27%;
+    }
+
+    to {
+        right: 0;
+    }
+
     /* from {width: 0;}
     to {width: 25%;} */
 }
 
 @keyframes slideout {
-    from {right: 0;}
-    to {right:-27%;}
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -27%;
+    }
+
     /* from{width: 25%;}
     to {width: 0;} */
 }
 
 .all-updates-info {
-    position:absolute;
+    position: absolute;
     right: -27%;
     top: 0;
-    width:25%;
-    height:100vh;
+    width: 25%;
+    height: 100vh;
     z-index: 10;
     background-color: white;
-    overflow-x:hidden;
+    overflow-x: hidden;
     /* transition: 4s; */
     /* display:none; */
     /* animation: slidein .25s linear; */
     animation-fill-mode: forwards;
-    box-shadow: 0px 10px 16px 5px rgba(0,0,0,0.2);
-    padding:0;
-    margin:0;
+    box-shadow: 0px 10px 16px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
 }
 
 /* Grid */
-.all-updates-info {
-    display:grid;
-    grid-template-rows: 7% auto 10%;
-    grid-template-columns: 15px 1fr 48px;
-    grid-template-areas: 
-    "exit .   .  ." 
-    ". list list ."
-    ".  .    .   .";
+#all-updates-container,
+#update_container {
+    display: grid;
+    grid-template-rows: 45px auto 10%;
+    grid-template-columns: 45px 1fr 10%;
+    grid-template-areas:
+        "exit .    .   ."
+        " .  list list ."
+        " .   .    .   .";
 }
 
-.all-updates-info ul {
+#update_container .option-title {
+    font-size: x-large;
+
+}
+
+#update_list,
+#single_update_container {
     grid-area: list;
     list-style-type: none;
-    margin-block-start: 1em;
+    margin-block-start: 0;
     margin-block-end: 1em;
-    margin-inline-start: 15px;
+    margin-inline-start: 0;
     margin-inline-end: 25px;
     padding-inline-start: 0;
+}
+
+
+#single_update_container ul {
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 25px;
+    padding-inline-start: 0;
+}
+
+#update_list li {
+    margin-bottom: 10px;
+}
+
+#update_list span {
+    color: var(--blue1);
+    cursor: pointer;
+}
+
+#update_list span:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .all-updates-info span {
@@ -112,17 +152,22 @@ body {
 
 .all-updates-info li {
     list-style-type: none;
-    /* width: calc(); */
 }
 
-#exit {
+#exit,
+#back {
     grid-area: exit;
-    margin-top:-15px;
+    width: 35px;
+    margin: 5px;
+    /* margin-top:-15px;
     padding: 0;
-    /* position:absolute; */
-    font-size: 5em;
-    cursor:pointer;
+    font-size: 5em; */
+    cursor: pointer;
 }
+
+/* #update_container {
+    grid-area: list;
+} */
 
 /*************** Switch ***************/
 

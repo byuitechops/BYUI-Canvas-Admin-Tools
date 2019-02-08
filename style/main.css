@@ -4,14 +4,48 @@
 
 body {
     min-width: 500px;
-    padding: 20px 40px;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
+    display: grid;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+        'head head head'
+        '  .  body  . ';
 }
 
-h1 {
-    font-size: 36px;
-    margin: 10px 0;
+header {
+    grid-area: head;
+    height: 150px;
+    background-color: var(--blue1);
+    display: grid;
+    grid-template-columns: .24fr minmax(400px, 850px) auto 50px;
+    grid-template-areas:
+        ". title . menu";
+}
+
+header h1 {
+    grid-area: title;
+    font-size: 4.5em;
+    position: relative;
+    min-width: 850px;
+    color: white;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+#allUpdates {
+    grid-area: menu;
+    color: white;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
 h2 {

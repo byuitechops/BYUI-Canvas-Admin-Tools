@@ -44,7 +44,7 @@ function colorItem(event) {
     if (el.nodeName === 'INPUT') {
         console.log(el.nodeName);
         if (el.checked) {
-            el.parentNode.style.backgroundColor = '#42aaf4';
+            el.parentNode.style.backgroundColor = 'var(--blue1)';
         } else {
             el.parentNode.style.backgroundColor = '#666';
         }
@@ -99,15 +99,6 @@ function showUpdateInfo() {
         box.animation = 'slideout .25s linear forwards';
     }
 
-    // // I'll look into this a little more in the future. It's a different way of doing the transition/animation.
-    // if (box.width == 0 || box.width == '0px') {
-    //     box.width = '25%';
-    //     document.querySelector('.all-updates-info').style.boxShadow = '0px 10px 16px 5px rgba(0,0,0,0.2)';
-    // } else {
-    //     document.querySelector('.all-updates-info').style.boxShadow = 'none';
-    //     box.width = '0';
-    // }
-
 }
 
 /********************************
@@ -145,17 +136,21 @@ getJson().then(data => {
     document.querySelector('#allUpdates').addEventListener('click', () => {
         // Add popup type thing with the short descriptions of each update with the version number
         showUpdateInfo();
-
-        if (document.querySelector('.all-updates-info ul').style.display == 'none') {
-            setTimeout(() => {
-                document.querySelector('.all-updates-info ul').style.display = 'unset';
-                document.querySelector('#update_container').style.display = 'none';
-            }, 250);
-        }
     });
 
     document.querySelector('#exit').addEventListener('click', () => {
         showUpdateInfo();
+        setTimeout(() => {
+            document.querySelector('#all-updates-container').style.display = 'grid';
+            document.querySelector('#update_container').style.display = 'none';
+        }, 250);
+    });
+
+    document.querySelectorAll('#update_list li span').forEach(el => {
+        el.addEventListener('click', () => {
+            document.querySelector('#all-updates-container').style.display = 'none';
+            updated(data.update[el.id]);
+        });
     });
 
     // Check if the extension was just installed or updated
@@ -164,6 +159,9 @@ getJson().then(data => {
         firstOpen(data.install);
     } else if (bg === 'updated') {
         updated(data.update[0]);
+        let outer = document.querySelector('.all-updates-info');
+        document.querySelector('#all-updates-container').style.display = 'none';
+        outer.style.animation = 'slidein .25s linear forwards';
         console.log('Not the first load');
     }
 });

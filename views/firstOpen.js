@@ -1,4 +1,3 @@
-
 /********************************
  *
  * When the extension is added, this 
@@ -13,16 +12,16 @@ function firstOpen(installInfo) {
     // change the options page
     console.log('This is the first Load');
 
-    installInfo.forEach(el => {
-        let selector = document.querySelector(el.selector);
-        let before = document.querySelector(el.before);
+    // installInfo.forEach(el => {
+    //     let selector = document.querySelector(el.selector);
+    //     let before = document.querySelector(el.before);
 
-        let div = document.createElement('div');
-        div.classList = 'option-description install-info';
-        div.innerHTML = el.internals;
-        selector.insertBefore(div, before);
+    //     let div = document.createElement('div');
+    //     div.classList = 'option-description install-info';
+    //     div.innerHTML = el.internals;
+    //     selector.insertBefore(div, before);
 
-    });
+    // });
 }
 
 /********************************
@@ -40,36 +39,49 @@ function firstOpen(installInfo) {
 function updated(updateInfo) {
     // change the options page
     console.log('Things just done updated');
-    console.log(updateInfo);
+    console.log('Update info: ', updateInfo);
 
+    // The div containing all the information
     let outer = document.querySelector('.all-updates-info');
-    console.log(outer);
 
-    let div = document.createElement('div');
-    // div.className = 'outer-container';
-    div.id = 'update_container';
+    // back button
+    let img = document.createElement('img');
+    img.id = 'back';
+    img.src = '/images/back.png';
 
+    // The inner information
+    // Contains all the information about the selected update
+    let inner_div = document.createElement('div');
+    inner_div.id = 'single_update_container';
     let updateText =
-        `<div id="update" class="options-container">
-                <div class="option-title">Version ${updateInfo.version}${updateInfo.flashyTitle ? ' - ' + updateInfo.flashyTitle : ''}</div>
-                <div class="option-description">`;
-
-
-    updateText += '<ol>';
-
+        `<div class="option-title">Version ${updateInfo.version}${updateInfo.flashyTitle ? ' - ' + updateInfo.flashyTitle : ''}</div>
+    <div class="option-description">`;
+    updateText += '<ul>';
     updateText = updateInfo.features.reduce((acc, curr) => {
         let item = `<li>${curr}</li>`;
         acc += item;
         return acc;
     }, updateText);
+    updateText += '</ul></div>';
+    inner_div.innerHTML += updateText;
+    let created = document.querySelector('#update_container') ? document.querySelector('#update_container') : null;
 
-    updateText += '</ol></div></div>';
+    // Container for all info
+    // This is here to make it easier to hide all the information
+    let div = document.createElement('div');
+    div.id = 'update_container';
 
+    div.appendChild(img);
+    div.appendChild(inner_div);
 
-    div.innerHTML += updateText;
-    console.log(div);
+    if (created) {
+        outer.replaceChild(div, created);
+    } else {
+        outer.appendChild(div);
+    }
 
-    outer.appendChild(div);
-    document.querySelector('.all-updates-info ul').style.display = 'none';
-    outer.style.animation = 'slidein .25s linear forwards';
+    document.querySelector('#back').addEventListener('click', () => {
+        document.querySelector('#all-updates-container').style.display = 'grid';
+        document.querySelector('#update_container').style.display = 'none';
+    });
 }
