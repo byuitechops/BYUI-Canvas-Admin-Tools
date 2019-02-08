@@ -33,7 +33,7 @@ function getJson() {
  * Change the color of the checkbox
  * when an option is selected.
  * 
-********************************/
+ ********************************/
 function colorItem(event) {
     let el;
     if (event.target) {
@@ -58,7 +58,7 @@ function colorItem(event) {
  * when one of the options is
  * selected.
  * 
-********************************/
+ ********************************/
 function saveOptions(features) {
     let checkedFeatures = features.reduce((acc, curr) => {
         acc[curr.id] = document.querySelector(`#${curr.id}`).checked;
@@ -84,6 +84,13 @@ function getOptions(features) {
     });
 }
 
+/********************************
+ * 
+ * Show and hide the sidebar that 
+ * contains all the information
+ * about updates
+ * 
+ ********************************/
 function showUpdateInfo() {
     // This gives the computed value of the element. 
     let right = window.getComputedStyle(document.querySelector('.all-updates-info')).getPropertyValue('right');
@@ -94,11 +101,48 @@ function showUpdateInfo() {
 
     if (rightNum < 0) {
         box.animation = 'slidein .25s linear forwards';
+        // box.boxShadow = '0 0 0 99999px rgba(0, 0, 0, .5)';
+        let shadow = maskAllExcept(document.querySelector('.all-updates-info'));
+        shadow.addEventListener('click', () => {
+            document.querySelector('body').removeChild(shadow);
+            showUpdateInfo();
+            if (document.querySelector('#update_container').style.display !== 'none') {
+                setTimeout(() => {
+                    document.querySelector('#all-updates-container').style.display = 'grid';
+                    document.querySelector('#update_container').style.display = 'none';
+                }, 250);
+            }
+        });
         // box.display = 'block';
     } else if (rightNum >= 0) {
         box.animation = 'slideout .25s linear forwards';
+        box.boxShadow = 'unset';
     }
 
+}
+
+/**
+ * Taken from stackoverflow
+ * @param {*} div 
+ */
+function maskAllExcept(div) {
+    console.log(div);
+    var shadow = document.createElement('div');
+    shadow.id = 'shadow';
+    shadow.style.position = "absolute";
+    shadow.style.left = shadow.style.right = shadow.style.top = shadow.style.bottom = "0";
+    shadow.style.height = shadow.style.width = '100%';
+    shadow.style.backgroundColor = 'rgba(0, 0, 0, .5)';
+    shadow.style.zIndex = 1000;
+    div.style.zIndex = 1001;
+    document.body.appendChild(shadow);
+    console.log(shadow);
+    return shadow;
+}
+
+function showFeedbackDiv() {
+    let div = document.querySelector('#feedback-div');
+    div.style.display = 'block';
 }
 
 /********************************
@@ -140,6 +184,8 @@ getJson().then(data => {
 
     document.querySelector('#exit').addEventListener('click', () => {
         showUpdateInfo();
+        document.querySelector('body').removeChild(document.querySelector('#shadow'));
+
         setTimeout(() => {
             document.querySelector('#all-updates-container').style.display = 'grid';
             document.querySelector('#update_container').style.display = 'none';
@@ -151,6 +197,16 @@ getJson().then(data => {
             document.querySelector('#all-updates-container').style.display = 'none';
             updated(data.update[el.id]);
         });
+    });
+
+    document.querySelector('.feedback-button').addEventListener('click', (el) => {
+        let shadow = maskAllExcept(document.querySelector('#feedback-div'));
+        shadow.addEventListener('click', () => {
+            document.querySelector('body').removeChild(shadow);
+            document.querySelector('#feedback-div').style.display = 'none';
+        });
+        console.log(el.target);
+        showFeedbackDiv();
     });
 
     // Check if the extension was just installed or updated
