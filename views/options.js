@@ -17,6 +17,7 @@ function getJson() {
 
         function onError(err) {
             console.error(err);
+            reject();
         }
 
         var request = new XMLHttpRequest();
@@ -70,7 +71,8 @@ function saveOptions(features) {
 }
 
 /********************************
- *
+ *      getOptions(features)
+ * 
  * Gets options from chrome.storage
  * Null value on the "get" returns all of the items
  *
@@ -85,6 +87,7 @@ function getOptions(features) {
 }
 
 /********************************
+ *       showUpdateInfo()       
  * 
  * Show and hide the sidebar that 
  * contains all the information
@@ -94,37 +97,109 @@ function getOptions(features) {
 function showUpdateInfo() {
     // This gives the computed value of the element. 
     let right = window.getComputedStyle(document.querySelector('.all-updates-info')).getPropertyValue('right');
-    let box = document.querySelector('.all-updates-info').style;
-    console.log(right);
-
     let rightNum = parseInt(right.substring(0, right.length - 2));
 
     if (rightNum < 0) {
-        box.animation = 'slidein .25s linear forwards';
-        // box.boxShadow = '0 0 0 99999px rgba(0, 0, 0, .5)';
-        let shadow = maskAllExcept(document.querySelector('.all-updates-info'));
-        shadow.addEventListener('click', () => {
-            document.querySelector('body').removeChild(shadow);
-            showUpdateInfo();
-            if (document.querySelector('#update_container').style.display !== 'none') {
-                setTimeout(() => {
-                    document.querySelector('#all-updates-container').style.display = 'grid';
-                    document.querySelector('#update_container').style.display = 'none';
-                }, 250);
-            }
-        });
-        // box.display = 'block';
+        showUpdate();
     } else if (rightNum >= 0) {
-        box.animation = 'slideout .25s linear forwards';
-        box.boxShadow = 'unset';
+        hideUpdate();
     }
+}
+
+/******************************
+ *        showUpdate()
+ ******************************/
+function showUpdate() {
+    // Variables
+    let box = document.querySelector('.all-updates-info'),
+        shadow;
+
+    // Move udpdate div to be visible
+    box.style.animation = 'slidein .25s linear forwards';
+
+    // Create shadow div for a shadow around everything except update div
+    shadow = maskAllExcept(document.querySelector('.all-updates-info'));
+
+    // Create event listener for clicking the shadow div that will close the update div and remove the shadow div
+    shadow.addEventListener('click', () => {
+        hideUpdate();
+    });
 
 }
 
-/**
- * Taken from stackoverflow
- * @param {*} div 
- */
+/********************************
+ *         hideUpdate()
+ * 
+ * Hides the div that displays 
+ * information about the all 
+ * the updates.
+ * 
+ ********************************/
+function hideUpdate() {
+    // Variables
+    let box = document.querySelector('.all-updates-info');
+    let allUpdates = document.querySelector('#all-updates-container');
+    let singleUpdate = document.querySelector('#update_container');
+    let shadow = document.querySelector('#shadow');
+
+    // Move update div off the page
+    box.style.animation = 'slideout .25s linear forwards';
+
+    // Remove the box shadow around the updates div
+    box.style.boxShadow = 'unset';
+
+    // Remove the Shadow div
+    document.querySelector('body').removeChild(shadow);
+
+    // Change the contents of the div to show the main update page if specific information is displayed
+    // set timeout 250 before changing contents.
+    if (singleUpdate && singleUpdate.style.display !== 'none') {
+        setTimeout(() => {
+            hideOneShowAnother(singleUpdate, allUpdates);
+        }, 250);
+    }
+}
+
+/****************************
+ *   hideOneShowAnother(hide,show,action)
+ * 
+ * @param {} hide 
+ * @param {} show  
+ * @param {string} action - 'hide', 'show'
+ * 
+ ****************************/
+function hideOneShowAnother(hide, show = null, action = 'both') {
+    switch (action) {
+        case 'hide':
+            hide.style.display = 'none';
+            if (show) show.style.display = 'none';
+            break;
+        case 'show':
+            hide.style.display = 'grid';
+            if (show) show.style.display = 'grid';
+            break;
+        default:
+            hide.style.display = 'none';
+            show.style.display = 'grid';
+            break;
+    }
+}
+
+/******************************
+ *     maskAllExcept(div)  
+ *  *Drawn from stackoverflow*  
+ * https://stackoverflow.com/questions/22249885/disable-everything-except-a-div-element#answer-22249975
+ * 
+ * Inserts a div behind the element
+ * included as a parameter. 
+ * The div will add a shadow over 
+ * page, and will block everything
+ * else on the page.
+ * 
+ * return value: HTMLDivElement
+ * 
+ * @param {*} div - Element to put in front of div
+ ******************************/
 function maskAllExcept(div) {
     console.log(div);
     var shadow = document.createElement('div');
@@ -136,13 +211,24 @@ function maskAllExcept(div) {
     shadow.style.zIndex = 1000;
     div.style.zIndex = 1001;
     document.body.appendChild(shadow);
-    console.log(shadow);
     return shadow;
 }
 
+/******************************
+ *     showFeedbackDiv()
+ * 
+ * Show the feedback div
+ * 
+ * return value: void
+ ******************************/
 function showFeedbackDiv() {
     let div = document.querySelector('#feedback-div');
-    div.style.display = 'block';
+    let shadow = maskAllExcept(document.querySelector('#feedback-div'));
+    shadow.addEventListener('click', () => {
+        document.querySelector('body').removeChild(shadow);
+        hideOneShowAnother(div, null, 'hide');
+    });
+    hideOneShowAnother(div, null, 'show');
 }
 
 /********************************
@@ -177,35 +263,29 @@ getJson().then(data => {
         saveOptions(data.details);
     }));
 
+    // Div containing information about the different udpates
     document.querySelector('#allUpdates').addEventListener('click', () => {
         // Add popup type thing with the short descriptions of each update with the version number
-        showUpdateInfo();
+        showUpdate();
     });
 
+    // Exit Update div
     document.querySelector('#exit').addEventListener('click', () => {
-        showUpdateInfo();
-        document.querySelector('body').removeChild(document.querySelector('#shadow'));
-
-        setTimeout(() => {
-            document.querySelector('#all-updates-container').style.display = 'grid';
-            document.querySelector('#update_container').style.display = 'none';
-        }, 250);
+        hideUpdate();
     });
 
+    // Each update number
+    // Displays the extended information about the selected update
     document.querySelectorAll('#update_list li span').forEach(el => {
         el.addEventListener('click', () => {
-            document.querySelector('#all-updates-container').style.display = 'none';
+            let allUpdates = document.querySelector('#all-updates-container');
+            hideOneShowAnother(allUpdates, null, 'hide');
             updated(data.update[el.id]);
         });
     });
 
-    document.querySelector('.feedback-button').addEventListener('click', (el) => {
-        let shadow = maskAllExcept(document.querySelector('#feedback-div'));
-        shadow.addEventListener('click', () => {
-            document.querySelector('body').removeChild(shadow);
-            document.querySelector('#feedback-div').style.display = 'none';
-        });
-        console.log(el.target);
+    // Shows a div containing a feedback form
+    document.querySelector('.feedback-button').addEventListener('click', () => {
         showFeedbackDiv();
     });
 
@@ -215,17 +295,8 @@ getJson().then(data => {
         firstOpen(data.install);
     } else if (bg === 'updated') {
         updated(data.update[0]);
-        let outer = document.querySelector('.all-updates-info');
-        document.querySelector('#all-updates-container').style.display = 'none';
-        outer.style.animation = 'slidein .25s linear forwards';
+        let allUpdates = document.querySelector('#all-updates-container');
+        hideOneShowAnother(allUpdates, null, 'hide');
         console.log('Not the first load');
     }
 });
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     getOptions(features);
-//     document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
-//     document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', saveOptions));
-// });

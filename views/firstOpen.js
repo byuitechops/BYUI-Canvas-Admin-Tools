@@ -80,8 +80,13 @@ function updated(updateInfo) {
         outer.appendChild(div);
     }
 
+    if (!document.querySelector('#shadow')) {
+        showUpdate();
+    }
+
     document.querySelector('#back').addEventListener('click', () => {
-        document.querySelector('#all-updates-container').style.display = 'grid';
-        document.querySelector('#update_container').style.display = 'none';
+        let allVersions = document.querySelector('#all-updates-container');
+        let oneVersion = document.querySelector('#update_container');
+        hideOneShowAnother(oneVersion, allVersions);
     });
 }
