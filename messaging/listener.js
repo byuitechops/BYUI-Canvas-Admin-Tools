@@ -30,10 +30,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse("Sections unlocked!");
             break;
         case "addDivsToQuestionBank":
+            loadFullPage()
+                .then(clickTheButtons)
+                .catch(console.error);
             sendResponse("Divs added!");
             break;
         case "editor":
             sendResponse("Editor popped up!");
+            break;
+        case 'options':
+            chrome.runtime.openOptionsPage();
+            sendResponse('Options opened');
             break;
         default:
             sendResponse("Feature could not be found.");
