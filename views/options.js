@@ -86,28 +86,19 @@ function getOptions(features) {
     });
 }
 
-/********************************
- *       showUpdateInfo()       
- * 
- * Show and hide the sidebar that 
- * contains all the information
- * about updates
- * 
- ********************************/
-function showUpdateInfo() {
-    // This gives the computed value of the element. 
-    let right = window.getComputedStyle(document.querySelector('.all-updates-info')).getPropertyValue('right');
-    let rightNum = parseInt(right.substring(0, right.length - 2));
-
-    if (rightNum < 0) {
-        showUpdate();
-    } else if (rightNum >= 0) {
-        hideUpdate();
-    }
-}
-
 /******************************
  *        showUpdate()
+ * 
+ * Will show the update div on
+ * the options page. 
+ * It adds a shadow covering the
+ * other elements of the page,
+ * and makes them unaccessible.
+ * It then adds an event listener
+ * on the shadow so when you click
+ * the shadow, it will exit the 
+ * updates div and show the rest
+ * of the page.
  ******************************/
 function showUpdate() {
     // Variables
@@ -133,6 +124,7 @@ function showUpdate() {
  * Hides the div that displays 
  * information about the all 
  * the updates.
+ * Removes the shadow element.
  * 
  ********************************/
 function hideUpdate() {
@@ -162,6 +154,11 @@ function hideUpdate() {
 
 /****************************
  *   hideOneShowAnother(hide,show,action)
+ * 
+ * Hides or shows an element that
+ * you specify. If no action is
+ * declared, it will hide the first
+ * and show the second elements.
  * 
  * @param {} hide 
  * @param {} show  
@@ -291,12 +288,11 @@ getJson().then(data => {
 
     // Check if the extension was just installed or updated
     if (bg === 'installed') {
-        console.log('First Load');
+        // Not being used right now
         firstOpen(data.install);
     } else if (bg === 'updated') {
         updated(data.update[0]);
         let allUpdates = document.querySelector('#all-updates-container');
         hideOneShowAnother(allUpdates, null, 'hide');
-        console.log('Not the first load');
     }
 });

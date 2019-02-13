@@ -1,6 +1,5 @@
 {
-    "update": [
-        {
+    "update": [{
             "version": "1.0.0",
             "flashyTitle": "Total Revamp",
             "features": [
@@ -18,10 +17,17 @@
                 "This is the second thing"
             ],
             "short": "Example 2"
+        },
+        {
+            "version": "0.8.0",
+            "flashyTitle": "",
+            "features": [
+                "Add some magical things and stuff"
+            ],
+            "short": "Example 2"
         }
     ],
-    "details": [
-        {
+    "details": [{
             "id": "sectionsColumn",
             "title": "Display Sections Column",
             "description": "This will display a new column listing the sections for each course on the right side of the search results. If a section was cross - listed into the course, it is highlighted in blue. Blueprint courses display as 'BP', Reference courses as 'REF', and courses that do not have sections but have a long title, are shortened to five letters.",
@@ -88,8 +94,7 @@
             "type": "popup"
         }
     ],
-    "install": [
-        {
+    "install": [{
             "name": "popup",
             "internals": "<p class='install-info'>The tools under this label will only run when you click the button in the popup. The button will only appear if the option below is selected. These tools primarily automate tasks. They turn several button clicks into just a few.</p>",
             "selector": "div#popup",
@@ -100,12 +105,6 @@
             "internals": "<p class='install-info'>The tools under the Displays label will run automatically on the correct pages. The purpose of these tools is to make navigation easier. There are a couple that do things when clicked, but most of them are for navigation.</p>",
             "selector": "div#display",
             "before": "div#display div"
-        },
-        {
-            "name": "General Info",
-            "internals": "<p class='install-info'>The purpose of this extension is to make navigating and manipulating Canvas as an admin easier.</p>",
-            "selector": "body",
-            "before": "div"
         }
     ]
 }

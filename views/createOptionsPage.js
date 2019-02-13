@@ -1,6 +1,11 @@
 function createPage(features, updates) {
 
-    features.map(({ type, id, title, description: desc }) => {
+    features.map(({
+        type,
+        id,
+        title,
+        description: desc
+    }) => {
 
         let output =
             `<label class="switch">
@@ -24,6 +29,7 @@ function createUpdateDiv(updates) {
 
     let div = document.createElement('div');
     div.className = 'all-updates-info';
+    let title = '<h1 id="updateTitle>Version History</h1>';
     let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><ul id="update_list">';
 
     ul = updates.reduce((acc, curr, i) => {
@@ -34,8 +40,7 @@ function createUpdateDiv(updates) {
     }, ul);
 
     ul += '</ul></div>';
-
+    // div.innerHTML += title;
     div.innerHTML += ul;
     document.querySelector('#extension').before(div);
-    console.log(div);
 }

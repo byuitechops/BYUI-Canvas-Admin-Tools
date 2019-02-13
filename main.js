@@ -1,3 +1,7 @@
+/**
+ * 
+ * @param {*} event 
+ */
 function setItem(event) {
     var itemID = event.target.id;
     var storageInfo = {};
@@ -12,6 +16,11 @@ function setItem(event) {
     });
 }
 
+/**
+ * Get the information from chrome
+ * storage. If the elements haven't
+ * been declared as visible, hide them.
+ */
 chrome.storage.sync.get({
     deleteQuizQuestions: false,
     killQuizzes: false,
@@ -36,7 +45,10 @@ chrome.storage.sync.get({
 document.addEventListener('DOMContentLoaded', () => {
     var buttons = document.querySelectorAll('button');
     var tabId = 0;
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, tabs => {
         tabId = tabs[0].id;
     });
 
@@ -52,5 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-});
 
+
+    document.querySelector('#menuIcon').addEventListener('click', () => {
+        chrome.runtime.openOptionsPage();
+    });
+
+    document.querySelector('#menuIcon').addEventListener('mouseover', () => {
+        document.querySelector('#menuImg').style.transform = 'rotate(135deg)';
+    });
+    document.querySelector('#menuIcon').addEventListener('mouseout', () => {
+        document.querySelector('#menuImg').style.transform = 'rotate(0deg)';
+    });
+
+});

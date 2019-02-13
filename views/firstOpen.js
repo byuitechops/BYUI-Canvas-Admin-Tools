@@ -6,6 +6,12 @@
  * about the extension that should
  * help navigate and use it without
  * too much difficulty
+ * 
+ * Not currently being used. 
+ * I left it here just in case
+ * we want to use it at some point 
+ * in the future to display 
+ * information
  *
  ********************************/
 function firstOpen(installInfo) {
@@ -38,8 +44,6 @@ function firstOpen(installInfo) {
  ********************************/
 function updated(updateInfo) {
     // change the options page
-    console.log('Things just done updated');
-    console.log('Update info: ', updateInfo);
 
     // The div containing all the information
     let outer = document.querySelector('.all-updates-info');
