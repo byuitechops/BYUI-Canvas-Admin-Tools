@@ -21,16 +21,14 @@ function createPage(features, updates) {
         document.querySelector(`#${type}`).appendChild(div);
 
     });
-
     createUpdateDiv(updates);
 }
 
 function createUpdateDiv(updates) {
-
     let div = document.createElement('div');
     div.className = 'all-updates-info';
     let title = '<h1 id="updateTitle>Version History</h1>';
-    let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><ul id="update_list">';
+    let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><h1>Version History</h1><ul id="update_list">';
 
     ul = updates.reduce((acc, curr, i) => {
         let li =
@@ -40,7 +38,7 @@ function createUpdateDiv(updates) {
     }, ul);
 
     ul += '</ul></div>';
-    // div.innerHTML += title;
+    div.innerHTML = title;
     div.innerHTML += ul;
     document.querySelector('#extension').before(div);
 }

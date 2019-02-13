@@ -6,6 +6,7 @@
 
 body {
     min-width: 500px;
+    min-height: 500px;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     display: grid;
@@ -13,8 +14,7 @@ body {
     overflow-y: hidden;
     margin: 0;
     padding: 0;
-
-    grid-template-rows: 150px auto;
+    grid-template-rows: 150px 1fr 150px;
     grid-template-columns: 1fr auto 1fr;
     row-gap: 20px;
     grid-template-areas:
@@ -214,9 +214,15 @@ h2 {
     grid-template-rows: 45px auto 10%;
     grid-template-columns: 45px 1fr 10%;
     grid-template-areas:
-        "exit .    .   ."
-        " .  list list ."
-        " .   .    .   .";
+        "exit title title ."
+        " .  list   list  ."
+        " .   .      .    .";
+}
+
+#all-updates-container h1 {
+    grid-area: title;
+    margin: auto;
+    font-size: 2.5em;
 }
 
 #update_container .option-title {
@@ -287,8 +293,10 @@ h2 {
 
 .switch input {
     position: absolute;
-    opacity: 0;
+    /* opacity: 0; */
     cursor: pointer;
+    display: none;
+
 }
 
 .switch {

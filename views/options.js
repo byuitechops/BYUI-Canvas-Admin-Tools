@@ -255,8 +255,9 @@ getJson().then(data => {
     return data;
 }).then(data => {
     getOptions(data.details);
-    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
-    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', () => {
+    // document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', colorItem));
+    document.querySelectorAll('.switch').forEach(el => el.addEventListener('click', (el) => {
+        colorItem(el);
         saveOptions(data.details);
     }));
 
