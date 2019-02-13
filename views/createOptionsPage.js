@@ -28,11 +28,11 @@ function createUpdateDiv(updates) {
     let div = document.createElement('div');
     div.className = 'all-updates-info';
     let title = '<h1 id="updateTitle>Version History</h1>';
-    let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><h1>Version History</h1><ul id="update_list">';
+    let ul = '<div id="all-updates-container"><img src="/images/exit.png" id="exit"><h1>Version History</h1><ul id="update_list"><hr>';
 
     ul = updates.reduce((acc, curr, i) => {
         let li =
-            `<li><span id="${i}">${curr.version}</span> - ${curr.short}</li>`;
+            `<li><span id="${i}">${curr.version}</span> - ${curr.short}</li><hr>`;
         acc += li;
         return acc;
     }, ul);

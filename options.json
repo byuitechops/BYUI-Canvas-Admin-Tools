@@ -5,26 +5,30 @@
             "features": [
                 "Update the layout of the options page",
                 "Automatically open options page on both install and updates",
-                "Add install and update info"
+                "Adds both general and specific information about the updates",
+                "Make the creation of pages more dynamic, making development easier",
+                "Add a place for feedback",
+                "A link to the options page in the popup"
             ],
-            "short": "This will display a new column listing the sections for each course on the right side of the search results. If a section was cross - listed into the course, it is highlighted in blue. Blueprint courses display as 'BP', Reference courses as 'REF', and courses that do not have sections but have a long title, are shortened to five letters"
+            "short": "Total UI overhaul"
         },
         {
             "version": "0.8.1",
             "flashyTitle": "",
             "features": [
-                "Added a feature to add the correct wrapper to every question in a question bank.",
-                "This is the second thing"
+                "Fixed a bug that was slowing down Canvas dramatically. The extension would try to find crosslisted courses on incorrect pages, and it would do so in a seemingly infinite loop."
             ],
-            "short": "Example 2"
+            "short": "Emergency bug fix"
         },
         {
             "version": "0.8.0",
             "flashyTitle": "",
             "features": [
-                "Add some magical things and stuff"
+                "Added feature to remove all quizzes",
+                "Select all files button",
+                "Change how the options page is created to be more dynamic"
             ],
-            "short": "Example 2"
+            "short": "Remove all Quizzes and other similar tools"
         }
     ],
     "details": [{
