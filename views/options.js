@@ -237,8 +237,8 @@ function showFeedbackDiv() {
  * page to help with navigation. 
  *
  ********************************/
-let bg = chrome.extension.getBackgroundPage().firstLoad();
-
+let bg = chrome.extension.getBackgroundPage();
+bg = bg ? chrome.extension.getBackgroundPage().firstLoad() : null;
 
 /********************************
  * 
