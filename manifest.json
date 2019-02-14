@@ -3,7 +3,7 @@
     "name": "BYUI Canvas Admin Tools",
     "short_name": "Canvas Tools",
     "description": "Adds admin features to Canvas that simplify the admin experience.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "options_page": "views/options.html",
     "background": {
         "scripts": [
