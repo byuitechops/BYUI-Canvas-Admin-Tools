@@ -55,10 +55,10 @@ N/A
 #### 
 
 Options  
-![Options page](./options_page.PNG)  
+![Options page](/proj_Lifecycle/images/options_page.PNG)  
 
 Popup  
-![Popup](./popup.png)
+![Popup](/proj_Lifecycle/images/popup.png)
 
 -----
 

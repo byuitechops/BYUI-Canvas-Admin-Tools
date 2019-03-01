@@ -53,7 +53,7 @@ Column on the table
 
 #### 
 
-![Section Column](/proj_Lifecycle/sectionsTableColumn.jpg)
+![Section Column](/proj_Lifecycle/images/sectionsTableColumn.jpg)
 
 -----
 
