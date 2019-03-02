@@ -125,22 +125,10 @@ chrome.storage.sync.get({
     sectionsColumn: false,
 }, function (items) {
     if (items.sectionsColumn === true) {
-        // // Current working version
         var tableHTML = '';
-        // /* Check if the search results have changed at all, and if they have, insert sections */
-        // setInterval(() => {
-        // if (document.querySelector('tbody[data-automation="courses list"]') && tableHTML !== currTable) {
-        //         main()
-        //             .then(() => {
-        //                 tableHTML = document.querySelector('tbody').innerHTML;
-        //             })
-        //             .catch(console.error);
-        //     }
-        // }, 250);
-
-
 
         // New Mutation Observer design
+        // This seems to be working better, but it still calls the function like 10-15 times each time a mutation happens.
         let contentContainer = document.querySelector('#content');
         waitFor(contentContainer, () => {
             if (document.querySelector('tbody[data-automation="courses list"]')) {
@@ -148,8 +136,22 @@ chrome.storage.sync.get({
                 return document.querySelector('tbody[data-automation="courses list"]') && tableHTML !== currTable;
             }
         }, () => {
-            main();
-            tableHTML = document.querySelector('tbody').innerHTML;
+            main().then(() => {
+                tableHTML = document.querySelector('tbody').innerHTML;
+            });
         });
+
+        // // Previous Version
+        // /* Check if the search results have changed at all, and if they have, insert sections */
+        // setInterval(() => {
+        //     var currTable = document.querySelector('tbody').innerHTML;
+        //     if (document.querySelector('tbody[data-automation="courses list"]') && tableHTML !== currTable) {
+        //         main()
+        //             .then(() => {
+        //                 tableHTML = document.querySelector('tbody').innerHTML;
+        //             })
+        //             .catch(console.error);
+        //     }
+        // }, 250);
     }
 });

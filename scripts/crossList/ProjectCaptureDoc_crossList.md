@@ -1,4 +1,4 @@
-# Project Capture Document for Display Sections Column
+# Project Capture Document for Extension tool: Display Sections Column
 #### *Author: Theron Dowdle*
 #### *Stakeholder(s): Corey Moore*
 #### *Date: 2-27-2019*
