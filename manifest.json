@@ -41,7 +41,7 @@
                 "https://*.instructure.com/accounts/*"
             ],
             "js": [
-                "scripts/crossList/crossList.js",
+                "scripts/crossList/crossList.js"
             ]
         },
         {
