@@ -3,7 +3,7 @@
     "name": "BYUI Canvas Admin Tools",
     "short_name": "Canvas Tools",
     "description": "Adds admin features to Canvas that simplify the admin experience.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "options_page": "views/options.html",
     "background": {
         "scripts": [
@@ -38,10 +38,10 @@
         },
         {
             "matches": [
-                "https://*.instructure.com/accounts/*?"
+                "https://*.instructure.com/accounts/*"
             ],
             "js": [
-                "scripts/crossList.js"
+                "scripts/crossList/crossList.js"
             ]
         },
         {

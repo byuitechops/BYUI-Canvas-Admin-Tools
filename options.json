@@ -1,5 +1,14 @@
 {
     "update": [{
+            "version": "1.0.2",
+            "flashyTitle": "",
+            "features": [
+                "Made the Add div tool faster (hopefully)",
+                "Checks which questions need to be changed before updating them",
+                "Checks if there's a faster way to update the questions, and does that way if it is there"
+            ],
+            "short": "Question Bank div adder improvement"
+        }, {
             "version": "1.0.0",
             "flashyTitle": "Total Revamp",
             "features": [

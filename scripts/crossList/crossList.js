@@ -79,22 +79,44 @@ function populateSectionsColumn(courses, columnID) {
     });
 }
 
+let i = 0;
+
 function main() {
     return new Promise((resolve, reject) => {
-        courseRows = Array.from(document.querySelectorAll('tr')).slice(1);
-        /* Create columns and cells */
-        createColumn('crossListedSections', 'Sections');
-        createColumnCells('crossListedSections', courseRows);
 
-        var allCourseRows = courseRows.map(row => buildDetails(row));
+        console.log(`Running for ${i} time`);
+        i++;
 
-        Promise.all(allCourseRows)
-            .then(courses => {
-                /* Populate columns here with their respective functions */
-                populateSectionsColumn(courses, 'crossListedSections');
-            })
-            .then(resolve)
-            .catch(reject);
+        if (document.querySelector('tbody[data-automation="courses list"]')) {
+            courseRows = Array.from(document.querySelectorAll('tr')).slice(1);
+            /* Create columns and cells */
+            createColumn('crossListedSections', 'Sections');
+            createColumnCells('crossListedSections', courseRows);
+            var allCourseRows = courseRows.map(row => buildDetails(row));
+
+            Promise.all(allCourseRows)
+                .then(courses => {
+                    /* Populate columns here with their respective functions */
+                    populateSectionsColumn(courses, 'crossListedSections');
+                })
+                .then(resolve)
+                .catch(reject);
+        }
+    });
+}
+
+function waitFor(parent, fn, cb) {
+    var observer = new MutationObserver(() => {
+
+        if (fn()) {
+            // observer.disconnect();
+            cb();
+        }
+    });
+    observer.observe(parent, {
+        attributes: false,
+        childList: true,
+        subtree: true,
     });
 }
 
@@ -104,19 +126,32 @@ chrome.storage.sync.get({
 }, function (items) {
     if (items.sectionsColumn === true) {
         var tableHTML = '';
-        /* Check if the search results have changed at all, and if they have, insert sections */
-        if (document.querySelector('tbody[data-automation="courses list"]')) {
-            setInterval(() => {
-                var currTable = document.querySelector('tbody').innerHTML;
-                if (tableHTML !== currTable) {
-                    main()
-                        .then(() => {
-                            tableHTML = document.querySelector('tbody').innerHTML;
-                        })
-                        .catch(console.error);
-                }
-            }, 250);
-        }
 
+        // New Mutation Observer design
+        // This seems to be working better, but it still calls the function like 10-15 times each time a mutation happens.
+        let contentContainer = document.querySelector('#content');
+        waitFor(contentContainer, () => {
+            if (document.querySelector('tbody[data-automation="courses list"]')) {
+                var currTable = document.querySelector('tbody').innerHTML;
+                return document.querySelector('tbody[data-automation="courses list"]') && tableHTML !== currTable;
+            }
+        }, () => {
+            main().then(() => {
+                tableHTML = document.querySelector('tbody').innerHTML;
+            });
+        });
+
+        // // Previous Version
+        // /* Check if the search results have changed at all, and if they have, insert sections */
+        // setInterval(() => {
+        //     var currTable = document.querySelector('tbody').innerHTML;
+        //     if (document.querySelector('tbody[data-automation="courses list"]') && tableHTML !== currTable) {
+        //         main()
+        //             .then(() => {
+        //                 tableHTML = document.querySelector('tbody').innerHTML;
+        //             })
+        //             .catch(console.error);
+        //     }
+        // }, 250);
     }
 });
