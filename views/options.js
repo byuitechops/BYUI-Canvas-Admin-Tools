@@ -196,6 +196,7 @@ function hideOneShowAnother(hide, show = null, action = 'both') {
  * return value: HTMLDivElement
  * 
  * @param {*} div - Element to put in front of div
+ * @returns {DOM Element} The DOM element containing the shadow
  ******************************/
 function maskAllExcept(div) {
     console.log(div);

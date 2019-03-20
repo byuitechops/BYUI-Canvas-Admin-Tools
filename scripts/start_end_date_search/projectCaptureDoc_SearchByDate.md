@@ -56,7 +56,7 @@ It will have two options, a start date, and an end date. The user will be able t
 
 ### Timeline: ASAP.  No specific timeline though
 
-### Best Mode of Contact: 
+### Best Mode of Contact: Slack or email
 
 ### Next Meeting: n/a
 
