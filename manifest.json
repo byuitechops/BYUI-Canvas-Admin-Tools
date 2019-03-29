@@ -32,7 +32,7 @@
                 "https://*.instructure.com/*"
             ],
             "js": [
-                "/scripts/adminAccountName.js",
+                "/scripts/adminAccountName/adminAccountName.js",
                 "/messaging/listener.js"
             ]
         },
@@ -49,10 +49,10 @@
                 "https://*.instructure.com/courses/*"
             ],
             "js": [
-                "scripts/breadcrumbs.js",
-                "scripts/lock.js",
-                "scripts/addBlueprintParent.js",
-                "scripts/blueprintAssociations.js"
+                "scripts/breadcrumbs/breadcrumbs.js",
+                "scripts/lock/lock.js",
+                "scripts/addBlueprintParent/addBlueprintParent.js",
+                "scripts/blueprintAssociations/blueprintAssociations.js"
             ]
         },
         {
@@ -60,7 +60,7 @@
                 "https://*.instructure.com/*/modules"
             ],
             "js": [
-                "scripts/navToModule.js"
+                "scripts/navToModule/navToModule.js"
             ]
         },
         {
@@ -68,7 +68,7 @@
                 "https://*.instructure.com/*/quizzes/*/edit"
             ],
             "js": [
-                "scripts/deleteQuizQuestions.js"
+                "scripts/deleteQuizQuestions/deleteQuizQuestions.js"
             ]
         },
         {
@@ -76,7 +76,7 @@
                 "https://*.instructure.com/*/question_banks/*"
             ],
             "js": [
-                "scripts/editQuestionBanks.js"
+                "scripts/editQuestionBanks/editQuestionBanks.js"
             ]
         },
         {
@@ -84,7 +84,7 @@
                 "https://*.instructure.com/courses/*/files*"
             ],
             "js": [
-                "scripts/selectAllFiles.js"
+                "scripts/selectAllFiles/selectAllFiles.js"
             ]
         },
         {
@@ -92,7 +92,7 @@
                 "https://*.instructure.com/courses/*/quizzes"
             ],
             "js": [
-                "scripts/deleteAllQuizzes.js"
+                "scripts/deleteAllQuizzes/deleteAllQuizzes.js"
             ]
         },
         {
@@ -100,7 +100,7 @@
                 "https://*.instructure.com/*"
             ],
             "js": [
-                "scripts/editor.js"
+                "scripts/editor/editor.js"
             ]
         }
     ]

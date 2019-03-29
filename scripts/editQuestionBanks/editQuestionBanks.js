@@ -200,9 +200,8 @@ function clickTheButtons() {
     var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText.replace(/\s/g, '').toLocaleLowerCase();
     var courseName = title.length > 0 ? title.replace('onlinemaster', '') : null;
     let allQuestions = document.querySelectorAll('#questions > div');
-    // Gets a more specific selector for each question - all questions in the bank
+    // Get an array of objects that are just the questions that need editing
     let completeQuestionsObject = getQuestionsToEditObjects();
-
 
     // Run on the questions that need editing
     completeQuestionsObject.reduce((prev, el, i) => prev.then(() => FixTheHTML(el, i)), Promise.resolve());
