@@ -6,7 +6,7 @@
 
 ## Background
 
-Corey would have to go from a child course to its parent blueprint, but there was no easy way to find the parent course.  He requested a link that could take you there.
+Corey would have to go from a child course to its parent blueprint, but there was no easy way to find the parent course.  He requested to have a link appear that could take you there.
 
 <!-- 
 
@@ -85,13 +85,13 @@ They select if the tool is enabled on the options page, and it runs on the page 
 
 #### Definition of Outputs
 
-Adds a `div` to the bottom of the LMS that contains a link to the parent course
+Adds a `div` to the bottom of the user's instance of the web page that contains a link to the parent course
 
 <!-- List here a type definition for each output? For example, if the changes are directly to the LMS, list all changes that occur. If it is a CSV define the column names. If it is a JSON, give an example of the JSON structure. -->
 
 #### Destination of Outputs
 
-Directly on the LMS
+Directly on the user's instance of the webpage.
 
 <!-- Paragraph where/who to send outputs. To who? To where: Email, server, directly to LMS...? It would also include the steps to get access to the locations you need, such as getting added to a Trello Board, or access to a server, or the LMS. -->
 
@@ -134,5 +134,5 @@ This will probably be overkill for small projects -->
 
 -----
 
-#### *Approved By:* 
-#### *Approval Date:*
+#### *Approved By:* Aaron Shiffler
+#### *Approval Date:* 03 April 2019

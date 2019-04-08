@@ -47,7 +47,7 @@ Add a part to the course code in the breadcrumb that contains all sections of th
 
 #### Destination of Outputs
 
-Directly on the LMS
+Directly on the web page
 
 <!-- Paragraph where/who to send outputs. To who? To where: Email, server, directly to LMS...? It would also include the steps to get access to the locations you need, such as getting added to a Trello Board, or access to a server, or the LMS. -->
 

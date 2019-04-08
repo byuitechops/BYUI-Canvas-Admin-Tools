@@ -67,6 +67,7 @@ Don't Example:
 
 * The first button is in the extension popup 
 * The button to confirm the delete is an alert
+* Button to delete each question found through selector `#questions .display_question .delete_question_link`
 
 <!-- Paragraph of how to get inputs. From who? From where: Slack, email, server...? This also includes user selected options at runtime. How will we know what options to select? For example, in conversion tool, you'd follow the values on the Trello Board. It would also include the steps to get access to the information you need, such as getting added to a Trello Board, or access to a server. -->
 

@@ -6,7 +6,7 @@
 
 ## Background
 
-Corey Moore and his team had the task of deleting the quizzes in courses, which is a very repetitive, yet time-consuming task.  They requested a tool that would automate this process. 
+Corey Moore and his team had the task of deleting the quizzes in courses, which is a very repetitive, time-consuming task.  They requested a tool that would automate this process. 
 
 -----
 
@@ -31,6 +31,7 @@ This tool will add a button to the extension popup that will delete all the quiz
 
 * The first button is in the extension popup 
 * The button to confirm the delete is an alert
+* Finds button to delete each quiz through selector `#assignment-quizzes .quiz .delete-item`
 
 ---
 

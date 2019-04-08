@@ -5,15 +5,17 @@
 
 
 ## Background
-There are many tasks that they have to complete in canvas that take a long time, just because they have to click through many things.  They wanted something that would automate some of those clicking tasks.
+There are many tasks that Corey and his team have to complete in canvas that take a long time, just because they have to click through many things.  They wanted something that would automate some of those clicking tasks.
+The solution we decided on was to create a chrome extension that would automate those things for them.  The extension contains many tools, and each tool has its own capture doc describing it more in detail.
 
 -----
 
 ## Objectives
-* Automate admin tasks in Canvas
-	* There are many different tasks to automate, and they are continuously adding more ideas.
-* Display more than the default information on courses in specific places
-
+* Build a container, which shall contain many tools. 
+    * Make it easy to add more tools
+* Give end-user a nice UI to interact with each tool. 
+* The container holds the code that traffics the tool to canvas.
+* Deliver an extension to stakeholder that makes it easy for them do repetitive admin tasks on Canvas.
 
 -----
 
@@ -23,13 +25,24 @@ There are many tasks that they have to complete in canvas that take a long time,
 
 #### Source of Inputs
 
-The user will select which tools are enabled on the options page
+The user will select which tools are enabled on the options page of the extension. The options on that page set which tools are enabled/disabled. The program consumes their settings by reading it from local Chrome storage.
 
 #### Definition of Inputs
 
 * Checklist on the options page
-* The enabled tools have the checkbox area highlighted blue
+    * The enabled tools have the checkbox area highlighted blue
 * The enabled/disabled status of each tool is saved to chrome storage
+
+The input will be a key-pair value, where the key is the name of the tool, and the value will be true or false. True means the tool is enabled, false means the tool has been disabled. For example:
+```javascript
+{
+    deleteQuizQuestions: false,
+    killQuizzes: false,
+    blueprintLockItems: false,
+    divsToQuestions: false,
+    adminAccountNames: false
+}
+```
 
 ---
 
@@ -38,9 +51,11 @@ The user will select which tools are enabled on the options page
 
 Depends on the tool. Most of the tools don’t have an output.  They manipulate the DOM, but don’t give the user feedback on that.  If it does what it’s supposed to, they will see the manipulation they wanted. 
 
+The destination of the settings that the user selects is the user's local Chrome storage.
+
 #### Definition of Outputs
 
-N/A
+The outputs look like the inputs.
 
 ---
 
@@ -50,6 +65,7 @@ N/A
 
 * Options page where you can enable/disable each tool.
 * Popup in the browser where the user will tell the extension to run a tool through a button press.
+* The extension pop-up acts as an interface between the user for some tools, other tools run behind the scenes, if they are enabled.
 
 
 #### 
@@ -97,5 +113,5 @@ Popup
 
 -----
 
-#### *Approved By:* 
-#### *Approval Date:*
+#### *Approved By:* Aaron Shiffler
+#### *Approval Date:* 3 April 2019

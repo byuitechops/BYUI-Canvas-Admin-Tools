@@ -24,30 +24,6 @@ We are creating an extension tool that will reduce the process of adding a div w
 
 #### Definition of Inputs
 
-* The manifest.json dictates which urls will allow this tool to run
-
-```JSON
-"content_scripts": [{
-            {
-            "matches": [
-                "https://*.instructure.com/*/question_banks/*"
-            ],
-            "js": [
-                "scripts/editQuestionBanks.js"
-            ]
-        }
-```
-* Tool has to be active in chrome storage. This is set through the UI.
-```js
-chrome.storage.sync.get({
-    divsToQuestions: false
-    }, function (items) {
-        if (items.divsToQuestions === false) {
-            // Hides the button from the user if not active
-        document.querySelector('#addDivsToQuestions').style.display = 'none';
-    }
-});
-```
 Button click from the user to run the tool
 
 What class to assign the wrapper
@@ -83,8 +59,6 @@ No direct outputs, but it manipulates the LMS
 #### Destination of Outputs
 
 * Directly in the LMS
-
-* The person running the tool has to have the extension installed with their byui google account
 
 ---
 

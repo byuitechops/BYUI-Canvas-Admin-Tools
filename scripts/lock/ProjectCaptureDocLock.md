@@ -6,7 +6,7 @@
 
 ## Background
 
-Corey and his team were given the task to lock all blueprint items in many courses.  Those buttons were often difficult to click because they were alternating between visible and not-visible.  They requested a tool that would do this for them. 
+Corey and his team were given the task to lock all blueprint items in many courses.  Those buttons were often difficult to click because they were alternating between visible and not-visible, and there are often hundreds of them.  They requested a tool that would do this for them. 
 
 -----
 
@@ -30,6 +30,8 @@ Button click to lock or unlock the items
 #### Source of Inputs
 
 Button is on the extension popup
+Lock button selector `.icon-blueprint`
+Unlock button selector `.icon-blueprint-lock`
 
 ---
 
@@ -41,7 +43,7 @@ All items locked or unlocked
 
 #### Destination of Outputs
 
-Directly on the LMS
+On the LMS through the web page
 
 ---
 

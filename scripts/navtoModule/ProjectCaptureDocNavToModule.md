@@ -28,7 +28,7 @@ No user input
 
 #### Source of Inputs
 
-No user input
+Find all the modules through selector `[data-module-id]>a[id*="module_"]`
 
 ### Output Requirements
 
@@ -38,7 +38,7 @@ Adds a navbar to the bottom of the LMS with a link to each module
 
 #### Destination of Outputs
 
-Directly on the LMS
+Directly on the web page
 
 ---
 

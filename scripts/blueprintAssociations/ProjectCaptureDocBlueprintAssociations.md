@@ -6,7 +6,7 @@
 
 ## Background
 
-Something that Corey often had to do was go from a blueprint course to the courses associated to the blueprint.  The parent course would list its children courses, but there wasn't an easy way to get to them.  He requested something that would make the names of each course in that list a link to the course.
+Something that Corey often had to do was go from a blueprint course to the courses associated to the blueprint.  The parent course would list its children courses, but there wasn't an easy way to get to them.  He requested something that would make the names of each course in that list also be a link to that course.
 
 -----
 
@@ -24,13 +24,15 @@ This tool will take the list of associated courses, and turn each one into a lin
 
 #### Definition of Inputs
 
-No user input
+No real inputs...
+The program gets a list of courses that should be linked through the selector `#nav-tray-portal a[href*="/accounts"]`
+Uses the ID of the each course to create a link, and put the name of the course as the value of the link
 
 <!-- List here a type definition for each input. For example, if it is a CSV define the column names. If it is a JSON, give an example of the JSON structure. If it is user input, what will the user be asked for? -->
 
 #### Source of Inputs
 
-No user input
+Directly from webpage
 
 <!-- Paragraph of how to get inputs. From who? From where: Slack, email, server...? This also includes user selected options at runtime. How will we know what options to select? For example, in conversion tool, you'd follow the values on the Trello Board. It would also include the steps to get access to the information you need, such as getting added to a Trello Board, or access to a server. -->
 
@@ -46,7 +48,7 @@ Change the name of each associated course from plain text to a link.
 
 #### Destination of Outputs
 
-Directly on the LMS
+Directly on the web page
 
 <!-- Paragraph where/who to send outputs. To who? To where: Email, server, directly to LMS...? It would also include the steps to get access to the locations you need, such as getting added to a Trello Board, or access to a server, or the LMS. -->
 

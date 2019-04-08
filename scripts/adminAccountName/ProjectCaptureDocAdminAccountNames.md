@@ -54,13 +54,13 @@ Don't Example:
 
 #### Definition of Inputs
 
-No user inputs
+A link will be given to the program to be parsed and used to determine what the account *should* be called when the user is looking at the list of accounts.
 
 <!-- List here a type definition for each input. For example, if it is a CSV define the column names. If it is a JSON, give an example of the JSON structure. If it is user input, what will the user be asked for? -->
 
 #### Source of Inputs
 
-No user inputs
+Scrape `href` info from DOM items tagged with `#nav-tray-portal a[href*="/accounts"]`.
 
 <!-- Paragraph of how to get inputs. From who? From where: Slack, email, server...? This also includes user selected options at runtime. How will we know what options to select? For example, in conversion tool, you'd follow the values on the Trello Board. It would also include the steps to get access to the information you need, such as getting added to a Trello Board, or access to a server. -->
 
@@ -76,7 +76,7 @@ Adjusts what is displayed on the `Admin` tab of Canvas so it shows both the name
 
 #### Destination of Outputs
 
-Directly on LMS
+Directly on the user web page
 
 <!-- Paragraph where/who to send outputs. To who? To where: Email, server, directly to LMS...? It would also include the steps to get access to the locations you need, such as getting added to a Trello Board, or access to a server, or the LMS. -->
 
@@ -117,5 +117,5 @@ This will probably be overkill for small projects -->
 
 -----
 
-#### *Approved By:* 
-#### *Approval Date:*
+#### *Approved By:* Aaron Shiffler
+#### *Approval Date:* 03 April 2019
