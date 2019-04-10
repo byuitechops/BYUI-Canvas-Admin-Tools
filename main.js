@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         b.addEventListener('click', () => {
             let buttonAction = b.id;
             // Sends a message with the button's ID to listener.js
+
             chrome.tabs.sendMessage(tabId, buttonAction, response => {
                 console.log(response);
             });

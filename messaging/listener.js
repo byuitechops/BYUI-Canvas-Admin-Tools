@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /*****************
  * This file listens for any messages that are sent to content scripts from the extension. 
  * It will then perform some action depending on the message that is sent. 
