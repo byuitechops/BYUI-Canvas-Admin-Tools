@@ -111,7 +111,7 @@ function clickTheButtons() {
         let completeQuestionsObject = justTheQuestionsToEdit.map(el => {
             let questionText = el.questionText;
             let firstChild = questionText.children[0];
-            if (firstChild.tagName === 'DIV') {
+            if (firstChild != undefined && firstChild.tagName === 'DIV') {
                 let content = firstChild.innerHTML;
                 firstChild.querySelectorAll('div[class*="byui"]').forEach(div => {
                     content = div.innerHTML;
