@@ -195,7 +195,6 @@ function clickTheButtons() {
     }
 
 
-
     /********* Main Functionality ********/
     var title = document.querySelector('#breadcrumbs [href*=\'/courses/\'] .ellipsible').innerText.replace(/\s/g, '').toLocaleLowerCase();
     var courseName = title.length > 0 ? title.replace('onlinemaster', '') : null;
