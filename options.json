@@ -1,5 +1,14 @@
 {
-    "update": [{
+    "update": [
+        {
+            "version": "1.0.3",
+            "flashyTitle": "",
+            "features": [
+                "Made the Add div tool work again."
+            ],
+            "short": "Question Bank Div Adder fix"
+        },
+        {
             "version": "1.0.2",
             "flashyTitle": "",
             "features": [
@@ -8,7 +17,8 @@
                 "Checks if there's a faster way to update the questions, and does that way if it is there"
             ],
             "short": "Question Bank div adder improvement"
-        }, {
+        },
+        {
             "version": "1.0.0",
             "flashyTitle": "Total Revamp",
             "features": [
@@ -40,7 +50,8 @@
             "short": "Remove all Quizzes and other similar tools"
         }
     ],
-    "details": [{
+    "details": [
+        {
             "id": "sectionsColumn",
             "title": "Display Sections Column",
             "description": "This will display a new column listing the sections for each course on the right side of the search results. If a section was cross - listed into the course, it is highlighted in blue. Blueprint courses display as 'BP', Reference courses as 'REF', and courses that do not have sections but have a long title, are shortened to five letters.",
@@ -107,7 +118,8 @@
             "type": "popup"
         }
     ],
-    "install": [{
+    "install": [
+        {
             "name": "popup",
             "internals": "<p class='install-info'>The tools under this label will only run when you click the button in the popup. The button will only appear if the option below is selected. These tools primarily automate tasks. They turn several button clicks into just a few.</p>",
             "selector": "div#popup",
