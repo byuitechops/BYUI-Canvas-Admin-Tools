@@ -73,9 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#menuIcon').addEventListener('mouseover', () => {
         document.querySelector('#menuImg').style.transform = 'rotate(135deg)';
+        document.querySelector('#menuImg').getSVGDocument().querySelector(".st0").style.setProperty("fill", "#0076c6")
     });
     document.querySelector('#menuIcon').addEventListener('mouseout', () => {
         document.querySelector('#menuImg').style.transform = 'rotate(0deg)';
+        document.querySelector('#menuImg').getSVGDocument().querySelector(".st0").style.setProperty("fill", "#999999")
     });
 
 });

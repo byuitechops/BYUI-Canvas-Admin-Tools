@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Canvas Extended</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Canvas Extended</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+</head>
 
-    <body>
-        <header>
-            <h2>Canvas Admin</h2>
-            <div id="menuIcon">
-                <!-- This svg is for the cog icon. I put it in as an svg instead of a photo so I could manipulate the colors on hover -->
-                <svg xmlns="http://www.w3.org/2000/svg" id="menuImg" viewBox="0 0 144 144">
-                    <title>Settings</title>
-                    <g id="Layer_2" data-name="Layer 2">
-                        <g id="Layer_1-2" data-name="Layer 1">
-                            <path class="cls-1" d="M72,14.35l2.35,5.49,2.08,4.87,4.9,2L97.41,33.4l4.9,2,4.92-2,5.54-2.23-2.23,5.54-2,4.92,2,4.9,6.66,16.08,2,4.9,4.87,2.08L129.65,72l-5.49,2.35-4.87,2.08-2,4.9L110.6,97.41l-2,4.9,2,4.92,2.23,5.54-5.54-2.23-4.92-2-4.9,2-16.08,6.66-4.9,2-2.08,4.87L72,129.65l-2.35-5.49-2.08-4.87-4.9-2L46.59,110.6l-4.9-2-4.92,2-5.54,2.23,2.23-5.54,2-4.92-2-4.9L26.74,81.33l-2-4.9-4.87-2.08L14.35,72l5.49-2.35,4.87-2.08,2-4.9L33.4,46.59l2-4.9-2-4.92-2.23-5.54,5.54,2.23,4.92,2,4.9-2,16.08-6.66,4.9-2,2.08-4.87L72,14.35M80,0H64L57.7,14.73,41.62,21.39l-14.87-6L15.43,26.75q3,7.44,6,14.87L14.73,57.7,0,64V80L14.73,86.3l6.66,16.08-6,14.87,11.32,11.32,14.87-6,16.08,6.66L64,144H80l6.29-14.73,16.08-6.66,14.87,6,11.32-11.32q-3-7.44-6-14.87l6.66-16.08L144,80V64L129.27,57.7l-6.66-16.08,6-14.87L117.25,15.43l-14.87,6L86.3,14.73,80,0Z" />
-                            <path class="cls-1" d="M72,29.28A42.72,42.72,0,1,1,29.28,72,42.72,42.72,0,0,1,72,29.28m0-15A57.72,57.72,0,1,0,129.72,72,57.79,57.79,0,0,0,72,14.28Z" />
-                        </g>
-                    </g>
-                </svg>
-                <p>Settings</p>
-            </div>
-        </header>
+<body>
+    <header>
+        <h2>Canvas Admin</h2>
+        <div id="menuIcon">
+            <object type="image/svg+xml" id="menuImg" data="images/Cog.svg">
+                Your browser does not support SVG
+            </object>
+            <p>Settings</p>
+        </div>
+    </header>
 
-        <table>
-            <tr id="quizQuestionsDelete">
-                <td class="container" for="deleteQuestions">Delete Quiz Questions</td>
-                <td><button type="button" id="deleteQuizQuestions">Delete Questions</button></td>
-            </tr>
-            <tr id="killQuizzes">
-                <td class="container" for="deleteQuizzes">Delete All Quizzes</td>
-                <td><button type="button" id="deleteQuizzes">Delete Quizzes</button></td>
-            </tr>
-            <tr id="blueprintLockItems">
-                <td class="container" for="lockElements">Blueprint Lock Items</td>
-                <td><button type="button" id="lockSections">Lock Items</button>
-                    <button type="button" id="unlockSections">Unlock Items</button></td>
-            </tr>
-            <tr id="addDivsToQuestions">
-                <td class="container" for="divsToQuestionBanks">Add Divs to Questions</td>
-                <td><button type="button" id="addDivsToQuestionBank">Add Divs</button></td>
-            </tr>
-        </table>
-        <script src="./main.js"></script>
+    <table>
+        <tr id="quizQuestionsDelete">
+            <td class="container" for="deleteQuestions">Delete Quiz Questions</td>
+            <td><button type="button" id="deleteQuizQuestions">Delete Questions</button></td>
+        </tr>
+        <tr id="killQuizzes">
+            <td class="container" for="deleteQuizzes">Delete All Quizzes</td>
+            <td><button type="button" id="deleteQuizzes">Delete Quizzes</button></td>
+        </tr>
+        <tr id="blueprintLockItems">
+            <td class="container" for="lockElements">Blueprint Lock Items</td>
+            <td><button type="button" id="lockSections">Lock Items</button>
+                <button type="button" id="unlockSections">Unlock Items</button></td>
+        </tr>
+        <tr id="addDivsToQuestions">
+            <td class="container" for="divsToQuestionBanks">Add Divs to Questions</td>
+            <td><button type="button" id="addDivsToQuestionBank">Add Divs</button></td>
+        </tr>
+    </table>
+    <script src="./main.js"></script>
 
-    </body>
+</body>
 
 </html>
