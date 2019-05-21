@@ -20,7 +20,6 @@ nav {
     top: 15px;
 }
 
-
 header span {
     font-size: 1.5em;
     position: absolute;
@@ -49,16 +48,12 @@ header span {
 }
 
 #menuIcon:hover {
-    fill: var(--blue1);
     color: var(--blue1);
 }
 
-button,
-#menuIcon,
-header span {
+button, #menuIcon, header span {
     cursor: pointer;
 }
-
 
 button:hover {
     color: var(--blue1);
