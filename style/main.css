@@ -27,6 +27,10 @@ header span {
     right: 50px;
 }
 
+object {
+    pointer-events: none;
+}
+
 #menuIcon {
     font-size: .8em;
     position: absolute;
