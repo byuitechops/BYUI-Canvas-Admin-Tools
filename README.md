@@ -23,7 +23,7 @@ If you're adding a new button to the extension popup:
     - type entails whether it's a button pressed in the popup ('popup')
     - if you just want it to run in the background put 'display as the type
   5. Add logic to **main.js**
-    - First add to the chrome.storage.sync.get the name of the id you just created in the **options.js**
+    - First add to the chrome.storage.sync.get the name of the id you just created in the **options.json**
     - Set this to false
     - Make an if statement below that following the pattern of the other statements
     - Add "document.querySelector(#[insert the name of the label you put on popup.html]).style.display = 'none'
