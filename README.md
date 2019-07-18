@@ -27,7 +27,7 @@ If you're adding a new button to the extension popup:
     - Set this to false
     - Make an if statement below that following the pattern of the other statements
     - Add "document.querySelector(#[insert the name of the label you put on popup.html]).style.display = 'none'
-  6. **Finally** add to the listener.js.
+  6. **Finally** add to the **messaging/listener.js**.
     - Add a 'case' with the name of the **button ID** to the switch statment
     - Add the function it will be calling (this function will be located in your logic/file that you made)
     - Add a sendResponse with a string saying what it successfully did (this is for the callback)
