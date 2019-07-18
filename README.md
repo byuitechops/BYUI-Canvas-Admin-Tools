@@ -18,7 +18,7 @@ If you're adding a new button to the extension popup:
   2. Update the **manifest.json** with that file's name, based on where it'll be used (e.g. "https://\*.instructure.com/courses/\*/quizzes" if you were only going to be running this script on the quizzes page)
   3. Add a button to the **popup.html** (wrap it in a label similar to the others)
     - Ensure the button and the label have separate IDs
-  4. Add it (in object form) to the list of features located in **options.js**
+  4. Add it (in object form) to the list of features located in **options.json**
     - Add an id, title, description, and type
     - type entails whether it's a button pressed in the popup ('popup')
     - if you just want it to run in the background put 'display as the type
