@@ -31,3 +31,14 @@ If you're adding a new button to the extension popup:
     - Add a 'case' with the name of the **button ID** to the switch statment
     - Add the function it will be calling (this function will be located in your logic/file that you made)
     - Add a sendResponse with a string saying what it successfully did (this is for the callback)
+    
+Instructions for updating the tool
+  _Note - Be sure to **increment the project version number** before updating_
+  1. Sign in to the account **technicaloperations@byui.edu** on Chrome
+  2. Navigate to the Chrome Extention Store [here](https://chrome.google.com/webstore/category/for_your_domain)
+  3. Click on the settings icon at the top left of the page. A dropdown menu will appear
+  4. Select _development dashboard_. A list of extensions will appear
+    - Select the 'Edit' link on the BYUI Canvas Admin Tools extention
+    ![Edit Link](canvas-admin-tools-1.png)
+  5. Compress the entire project folder into a .zip and upload it using the 'Upload Updated Package' button
+    ![Upload Button](canvas-admin-tools-2.png)
