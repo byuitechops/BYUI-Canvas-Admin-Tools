@@ -11,9 +11,9 @@ This includes features such as:
 ## Development
 ### Implementation
 If a user is logged in with their school email google account they should be able to go to the chrome extension store and it will be right there.
-### Updating, Testing, etc.
-This will contain features on how to work on, update, and organize the app.
 
+### Updating
+This will contain features on how to work on, update, and organize the app.
 #### Adding a new button to the extension popup:
   1. Create file with desired logic within the *scripts* folder
   2. Update the **manifest.json** with that file's name, based on where it'll be used (e.g. "https://\*.instructure.com/courses/\*/quizzes" if you were only going to be running this script on the quizzes page)
@@ -33,8 +33,7 @@ This will contain features on how to work on, update, and organize the app.
      * Add the function it will be calling (this function will be located in your logic/file that you made)
      * Add a sendResponse with a string saying what it successfully did (this is for the callback)
 
-
-#### Instructions for updating the tool:
+#### Updating the tool in Chrome Extention Store:
 (_Note - Be sure to increment the project version number before updating_)
   1. Sign in to the account **technicaloperations@byui.edu** on Chrome
   2. Navigate to the Chrome Extention Store [here](https://chrome.google.com/webstore/category/for_your_domain)
