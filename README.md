@@ -41,6 +41,6 @@ This will contain features on how to work on, update, and organize the app.
   3. Click on the settings icon at the top left of the page. A dropdown menu will appear
   4. Select _development dashboard_. A list of extensions will appear
      * Select the 'Edit' link on the BYUI Canvas Admin Tools extention
-    ![Edit Link](images/canvas-admin-tools-1.png)
+  ![Edit Link](images/canvas-admin-tools-1.png)
   5. Compress the entire project folder into a .zip and upload it using the 'Upload Updated Package' button
-    ![Upload Button](images/canvas-admin-tools-2.png)
+  ![Upload Button](images/canvas-admin-tools-2.png)
