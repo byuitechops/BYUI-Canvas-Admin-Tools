@@ -14,7 +14,7 @@ If a user is logged in with their school email google account they should be abl
 ### Updating, Testing, etc.
 This will contain features on how to work on, update, and organize the app.
 
-**Adding a new button to the extension popup:
+#### Adding a new button to the extension popup:
   1. Create file with desired logic within the *scripts* folder
   2. Update the **manifest.json** with that file's name, based on where it'll be used (e.g. "https://\*.instructure.com/courses/\*/quizzes" if you were only going to be running this script on the quizzes page)
   3. Add a button to the **popup.html** (wrap it in a label similar to the others)
@@ -32,8 +32,9 @@ This will contain features on how to work on, update, and organize the app.
      * Add a 'case' with the name of the **button ID** to the switch statment
      * Add the function it will be calling (this function will be located in your logic/file that you made)
      * Add a sendResponse with a string saying what it successfully did (this is for the callback)
-    
-**Instructions for updating the tool:**
+
+
+#### Instructions for updating the tool:
 (_Note - Be sure to increment the project version number before updating_)
   1. Sign in to the account **technicaloperations@byui.edu** on Chrome
   2. Navigate to the Chrome Extention Store [here](https://chrome.google.com/webstore/category/for_your_domain)
