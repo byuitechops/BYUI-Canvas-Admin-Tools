@@ -33,7 +33,7 @@ If you're adding a new button to the extension popup:
     - Add a sendResponse with a string saying what it successfully did (this is for the callback)
     
 Instructions for updating the tool
-  _Note - Be sure to **increment the project version number** before updating_
+  - _Note - Be sure to **increment the project version number** before updating_
   1. Sign in to the account **technicaloperations@byui.edu** on Chrome
   2. Navigate to the Chrome Extention Store [here](https://chrome.google.com/webstore/category/for_your_domain)
   3. Click on the settings icon at the top left of the page. A dropdown menu will appear
